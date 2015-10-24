@@ -119,4 +119,25 @@ describe('reducer', () => {
         }));
     });
 
+    it('handles DEAL', () => {
+        let deck = List.of(
+            Map({rank: '4', suit: 'S'}),
+            Map({rank: '5', suit: 'S'}),
+            Map({rank: '6', suit: 'S'}),
+            Map({rank: '7', suit: 'S'}),
+            Map({rank: 'A', suit: 'H'}),
+            Map({rank: 'A', suit: 'C'}),
+            Map({rank: '10', suit: 'D'}),
+            Map({rank: '2', suit: 'H'}),
+            Map({rank: 'Q', suit: 'C'})
+        );
+        const initialState = Map({deck: deck});
+        const action = { type: 'DEAL' };
+        const nextState = reducer(initialState, action);
+        expect(nextState.get('deck').size).to.equal(initialState.get('deck').size - 4);
+        expect(nextState.get('hands').size).to.equal(2);
+        expect(nextState.get('hands').get(0).size).to.equal(2);
+        expect(nextState.get('hands').get(1).size).to.equal(2);
+    });
+
 });
