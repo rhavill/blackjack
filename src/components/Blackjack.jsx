@@ -1,6 +1,7 @@
-import React from 'react';
+import React from 'react/addons';
 
 export default React.createClass({
+    mixins: [React.addons.PureRenderMixin],
     getCards: function() {
         return this.props.cards || [];
     },
