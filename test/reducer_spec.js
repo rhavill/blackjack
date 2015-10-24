@@ -138,6 +138,8 @@ describe('reducer', () => {
         expect(nextState.get('hands').size).to.equal(2);
         expect(nextState.get('hands').get(0).size).to.equal(2);
         expect(nextState.get('hands').get(1).size).to.equal(2);
+        expect(nextState.get('hands').get(1).includes( Map({rank: '7', suit: 'S',isFaceUp:false}))).to.equal(true);
+        expect(nextState.get('deck').includes( Map({rank: '4', suit: 'S'}))).to.equal(false);
     });
 
 });
