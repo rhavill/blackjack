@@ -4,16 +4,22 @@ function setState(state, newState) {
     return state.merge(newState);
 }
 
-function randomSorter(a, b) {
-    // For secure random numbers, use window.crypto.getRandomValues() instead
-    let r = Math.random();
-    if (r < 0.5)
-        return -1;
-    return 1;
-}
 function shuffle(state) {
-    return Map({deck: state.get('deck').sort(randomSorter)});
+    let deck = state.get('deck');
+    let minIndex = 0, maxIndex = deck.size - 1;
+    deck.map(function (card, index) {
+        let newIndex = Math.floor(Math.random() * (maxIndex - minIndex + 1)) + minIndex;
+        if (index != newIndex) {
+            card = deck.get(index);
+            let swapCard = deck.get(newIndex);
+            deck = deck.set(newIndex, card);
+            deck = deck.set(index, swapCard);
+        }
+
+    });
+    return state.set('deck', deck);
 }
+
 export default function(state = Map(), action = {type:'none'}) {
     switch (action.type) {
         case 'SET_STATE':

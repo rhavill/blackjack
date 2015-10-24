@@ -117,7 +117,6 @@ describe('reducer', () => {
                 {rank: 'Q', suit: 'C'}
             ]
         }));
-        console.log(nextState);
     });
 
 });
