@@ -13,7 +13,7 @@ describe('reducer', () => {
                 deck: List.of(
                     Map({rank: 'A', suit: 'C'}),
                     Map({rank: '4', suit: 'S'}),
-                    Map({rank: 'T', suit: 'D'}),
+                    Map({rank: '10', suit: 'D'}),
                     Map({rank: '2', suit: 'H'}),
                     Map({rank: 'Q', suit: 'C'})
                 )
@@ -24,7 +24,7 @@ describe('reducer', () => {
             deck: [
                 {rank: 'A', suit: 'C'},
                 {rank: '4', suit: 'S'},
-                {rank: 'T', suit: 'D'},
+                {rank: '10', suit: 'D'},
                 {rank: '2', suit: 'H'},
                 {rank: 'Q', suit: 'C'}
             ]
@@ -39,7 +39,7 @@ describe('reducer', () => {
                 deck: [
                     {rank: 'A', suit: 'C'},
                     {rank: '4', suit: 'S'},
-                    {rank: 'T', suit: 'D'},
+                    {rank: '10', suit: 'D'},
                     {rank: '2', suit: 'H'},
                     {rank: 'Q', suit: 'C'}
                 ]
@@ -50,7 +50,7 @@ describe('reducer', () => {
             deck: [
                 {rank: 'A', suit: 'C'},
                 {rank: '4', suit: 'S'},
-                {rank: 'T', suit: 'D'},
+                {rank: '10', suit: 'D'},
                 {rank: '2', suit: 'H'},
                 {rank: 'Q', suit: 'C'}
             ]
@@ -64,7 +64,7 @@ describe('reducer', () => {
                 deck: [
                     {rank: 'A', suit: 'C'},
                     {rank: '4', suit: 'S'},
-                    {rank: 'T', suit: 'D'},
+                    {rank: '10', suit: 'D'},
                     {rank: '2', suit: 'H'},
                     {rank: 'Q', suit: 'C'}
                 ]
@@ -76,11 +76,48 @@ describe('reducer', () => {
             deck: [
                 {rank: 'A', suit: 'C'},
                 {rank: '4', suit: 'S'},
-                {rank: 'T', suit: 'D'},
+                {rank: '10', suit: 'D'},
                 {rank: '2', suit: 'H'},
                 {rank: 'Q', suit: 'C'}
             ]
         }));
+    });
+
+    it('handles SHUFFLE', () => {
+        const initialState = Map({
+            deck: List.of(
+                Map({rank: '4', suit: 'S'}),
+                Map({rank: '5', suit: 'S'}),
+                Map({rank: '6', suit: 'S'}),
+                Map({rank: '7', suit: 'S'}),
+                Map({rank: 'A', suit: 'H'}),
+                Map({rank: 'A', suit: 'C'}),
+                Map({rank: '10', suit: 'D'}),
+                Map({rank: '2', suit: 'H'}),
+                Map({rank: 'Q', suit: 'C'})
+            )
+        });
+
+        const action = {
+            type: 'SHUFFLE'
+        };
+        const nextState = reducer(initialState, action);
+
+        expect(nextState.get('deck').size).to.equal(initialState.get('deck').size);
+        expect(nextState).not.equal(fromJS({
+            deck: [
+                {rank: '4', suit: 'S'},
+                {rank: '5', suit: 'S'},
+                {rank: '6', suit: 'S'},
+                {rank: '7', suit: 'S'},
+                {rank: 'A', suit: 'H'},
+                {rank: 'A', suit: 'C'},
+                {rank: '10', suit: 'D'},
+                {rank: '2', suit: 'H'},
+                {rank: 'Q', suit: 'C'}
+            ]
+        }));
+        console.log(nextState);
     });
 
 });
