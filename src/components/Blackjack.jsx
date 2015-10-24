@@ -1,6 +1,7 @@
 import React from 'react/addons';
+import {connect} from 'react-redux';
 
-export default React.createClass({
+export const Blackjack = React.createClass({
     mixins: [React.addons.PureRenderMixin],
     getCards: function() {
         return this.props.cards || [];
@@ -13,3 +14,12 @@ export default React.createClass({
         </div>;
     }
 });
+
+function mapStateToProps(state) {
+    return {
+        //cards: state.getIn(['vote', 'pair']),
+        cards: state.get('deck').toJS()
+    };
+}
+
+export const BlackjackContainer = connect(mapStateToProps)(Blackjack);
