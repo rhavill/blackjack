@@ -1,6 +1,5 @@
 import React from 'react/addons';
-//import React from 'react/addons';
-//require('react-addons-{addon}')
+
 import {connect} from 'react-redux';
 import * as actionCreators from '../action_creators';
 import Dealer from './Dealer';
