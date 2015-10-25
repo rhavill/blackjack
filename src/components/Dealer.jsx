@@ -8,10 +8,11 @@ export default class Dealer extends React.Component {
     }
 
     render() {
+        console.log(this.props.cards);
         return (
             <div id="dealer">
                 <h1>dealer</h1>
-                {this.getCards().map(card => <Card card={card} />
+                {this.getCards().map(card => <Card key={card.rank+card.suit} card={card} />
                 )}
             </div>
         )
