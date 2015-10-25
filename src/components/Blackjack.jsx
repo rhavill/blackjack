@@ -8,7 +8,7 @@ export const Blackjack = React.createClass({
     },
     render: function() {
         return <div className="cards">
-            <button>Shuffle</button>
+            <button onClick={() => this.props.shuffle()}>Shuffle</button>
             {this.getCards().map(card =>
                     <h1>{card.rank} of {card.suit}</h1>
             )}
