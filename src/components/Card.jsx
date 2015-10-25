@@ -1,15 +1,23 @@
 import React from 'react';
-import {suitSymbol} from '../data/card';
 
 export default class Card extends React.Component {
+
+    constructor() {
+        super();
+        this.suitSymbol = { C: '♣', D: '♦', H: '♥', S: '♠' };
+    }
 
     isFaceUp() {
         return this.props.card.isFaceUp;
     }
 
+    isRedSuit(suit) {
+        return (suit == 'H' || suit == 'D') ? true : false;
+    }
+
     render() {
         let rank = this.props.card.rank;
-        let suit = suitSymbol(this.props.card.suit);
+        let suit = this.suitSymbol[this.props.card.suit];
         return (
             <div className="card">
                 {this.isFaceUp() ?
