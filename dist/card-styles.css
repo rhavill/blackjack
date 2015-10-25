@@ -1,5 +1,6 @@
-#dealer {
+#dealer, #player {
   position:relative;margin-top:1em;
+  min-height: 16em;
 }
 
 body {

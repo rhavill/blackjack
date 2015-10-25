@@ -2,7 +2,7 @@ import React from 'react';
 
 import Card from './Card';
 
-export default class Dealer extends React.Component {
+export default class Player extends React.Component {
     getCards() {
         return this.props.cards || [];
     }
@@ -10,7 +10,7 @@ export default class Dealer extends React.Component {
     render() {
         return (
             <div id="dealer">
-                <h1>dealer</h1>
+                <h1>player</h1>
                 {this.getCards().map(card => <Card key={card.rank+card.suit} card={card} />
                 )}
             </div>
