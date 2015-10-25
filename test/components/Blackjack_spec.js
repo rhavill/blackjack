@@ -14,9 +14,9 @@ describe('Blackjack', () => {
         );
         const buttons = scryRenderedDOMComponentsWithTag(component, 'button');
 
-        expect(buttons.length).to.equal(1);
+        expect(buttons.length).to.equal(2);
         expect(buttons[0].textContent).to.equal('Shuffle');
-        //expect(buttons[1].textContent).to.equal('28 Days Later');
+        expect(buttons[1].textContent).to.equal('Deal');
     });
 
     it('invokes callback when Shuffle button is clicked', () => {
@@ -30,6 +30,19 @@ describe('Blackjack', () => {
         Simulate.click(buttons[0]);
 
         expect(isShuffled).to.equal(true);
+    });
+
+    it('invokes callback when Deal button is clicked', () => {
+        let didRun = false;
+        const run = () => didRun = true;
+
+        const component = renderIntoDocument(
+            <Blackjack cards={cards} deal={run} />
+        );
+        const buttons = scryRenderedDOMComponentsWithTag(component, 'button');
+        Simulate.click(buttons[1]);
+
+        expect(didRun).to.equal(true);
     });
 
 });

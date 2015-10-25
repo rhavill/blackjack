@@ -3,3 +3,9 @@ export function shuffle() {
         type: 'SHUFFLE'
     };
 }
+
+export function deal() {
+    return {
+        type: 'DEAL'
+    };
+}
