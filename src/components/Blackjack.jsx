@@ -1,5 +1,6 @@
 import React from 'react/addons';
 import {connect} from 'react-redux';
+import * as actionCreators from '../action_creators';
 
 export const Blackjack = React.createClass({
     mixins: [React.addons.PureRenderMixin],
@@ -23,4 +24,4 @@ function mapStateToProps(state) {
     };
 }
 
-export const BlackjackContainer = connect(mapStateToProps)(Blackjack);
+export const BlackjackContainer = connect(mapStateToProps, actionCreators)(Blackjack);
