@@ -16,7 +16,7 @@ export const Blackjack = React.createClass({
             <button onClick={() => this.props.deal()}>Deal</button>
             <Dealer/>
             {this.getCards().map(card =>
-                    <h1>{card.rank} of {card.suit}</h1>
+                    <h1 key={card.rank+card.suit}>{card.rank} of {card.suit}</h1>
             )}
         </div>;
     }
