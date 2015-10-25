@@ -9,7 +9,7 @@ export default class Player extends React.Component {
 
     render() {
         return (
-            <div id="dealer">
+            <div id="player">
                 <h1>player</h1>
                 {this.getCards().map(card => <Card key={card.rank+card.suit} card={card} />
                 )}

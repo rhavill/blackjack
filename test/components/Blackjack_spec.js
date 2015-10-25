@@ -3,7 +3,7 @@ import {Blackjack} from '../../src/components/Blackjack';
 import {expect} from 'chai';
 import cards from '../../src/data/cards';
 
-const {renderIntoDocument, scryRenderedDOMComponentsWithTag, Simulate}
+const {renderIntoDocument, scryRenderedDOMComponentsWithTag, Simulate, scryRenderedDOMComponentsWithClass}
     = React.addons.TestUtils;
 
 describe('Blackjack', () => {
@@ -45,4 +45,29 @@ describe('Blackjack', () => {
         expect(didRun).to.equal(true);
     });
 
+    it('renders player cards if they exist.', () => {
+        const deck = [
+            {rank: 'A', suit: 'C'},
+            {rank: '4', suit: 'S'},
+            {rank: '10', suit: 'D'},
+            {rank: '2', suit: 'H'},
+            {rank: 'Q', suit: 'C'}
+        ];
+        const dealerCards = [
+            {rank: '2', suit: 'H', isFaceUp: true},
+            {rank: '3', suit: 'H', isFaceUp: true}
+        ];
+        const playerCards = [
+            {rank: '4', suit: 'H', isFaceUp: true},
+            {rank: '5', suit: 'H', isFaceUp: false}
+        ];
+        const component = renderIntoDocument(
+            <Blackjack cards={deck} dealerCards={dealerCards} playerCards={playerCards} />
+        );
+        const cards = scryRenderedDOMComponentsWithClass(component, 'card');
+        expect(cards.length).to.equal(4);
+
+        const faceUpCards = scryRenderedDOMComponentsWithClass(component, 'front');
+        expect(faceUpCards.length).to.equal(3);
+    })
 });
