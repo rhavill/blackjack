@@ -9,11 +9,14 @@ export const Blackjack = React.createClass({
     getCards: function() {
         return this.props.cards || [];
     },
+    getDealerCards: function() {
+        return this.props.dealerCards || [];
+    },
     render: function() {
         return <div className="cards">
             <button onClick={() => this.props.shuffle()}>Shuffle</button>
             <button onClick={() => this.props.deal()}>Deal</button>
-            <Dealer/>
+            <Dealer dealerCards={this.props.dealerCards}/>
             {this.getCards().map(card =>
                     <h1 key={card.rank+card.suit}>{card.rank} of {card.suit}</h1>
             )}
@@ -24,7 +27,8 @@ export const Blackjack = React.createClass({
 function mapStateToProps(state) {
     return {
         //cards: state.getIn(['vote', 'pair']),
-        cards: state.get('deck').toJS()
+        cards: state.get('deck').toJS(),
+        dealerCards: state.get('hands').get(1).toJS()
     };
 }
 

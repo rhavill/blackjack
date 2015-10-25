@@ -10,7 +10,11 @@ const store = createStore(reducer);
 store.dispatch({
     type: 'SET_STATE',
     state: {
-        deck: cards
+        deck: cards,
+        hands: [
+            [],
+            []
+        ]
     }
 });
 
