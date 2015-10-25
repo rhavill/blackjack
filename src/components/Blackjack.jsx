@@ -13,7 +13,7 @@ export const Blackjack = React.createClass({
         return this.props.dealerCards || [];
     },
     render: function() {
-        return <div className="cards">
+        return <div>
             <button onClick={() => this.props.shuffle()}>Shuffle</button>
             <button onClick={() => this.props.deal()}>Deal</button>
             <Dealer cards={this.props.dealerCards}/>

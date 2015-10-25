@@ -7,16 +7,16 @@ body {
 }
 
 .card {
-  left:0em;top:0em;
-
   background-image: url("cardback.gif");
   border-color: #808080 #000000 #000000 #808080;
   border-width: 1px;
   border-style: solid;
   font-size: 30pt;
-  position: absolute;
   width:  3.75em;
   height: 5.00em;
+  position: relative;
+  float: left;
+  margin-right: 0.25em;
 }
 
 .front {
