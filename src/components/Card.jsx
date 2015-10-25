@@ -12,16 +12,17 @@ export default class Card extends React.Component {
     }
 
     isRedSuit(suit) {
-        return (suit == 'H' || suit == 'D') ? true : false;
+        return !!(suit == '♥' || suit == '♦');
     }
 
     render() {
         let rank = this.props.card.rank;
         let suit = this.suitSymbol[this.props.card.suit];
+        let cardClass = 'front' + ( this.isRedSuit(suit) ? ' red' : '');
         return (
             <div className="card">
                 {this.isFaceUp() ?
-                    <div className="front">
+                    <div className={cardClass}>
                         <div className="index">{rank}<br/>{suit}</div>
                         <div className="ace">{suit}</div>
                         <div className="bottom-index">{rank}<br/>{suit}</div>
