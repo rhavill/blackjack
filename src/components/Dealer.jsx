@@ -1,16 +1,17 @@
 import React from 'react';
 
+import Card from './Card';
+
 export default class Dealer extends React.Component {
     getCards() {
-        return this.props.dealerCards || [];
+        return this.props.cards || [];
     }
 
     render() {
         return (
             <div id="dealer">
                 <h1>dealer</h1>
-                {this.getCards().map(card =>
-                        <h2 key={card.rank+card.suit}>{card.rank} of {card.suit} (dealer)</h2>
+                {this.getCards().map(card => <Card card={card} />
                 )}
             </div>
         )

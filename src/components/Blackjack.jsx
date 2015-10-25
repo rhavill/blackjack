@@ -16,7 +16,7 @@ export const Blackjack = React.createClass({
         return <div className="cards">
             <button onClick={() => this.props.shuffle()}>Shuffle</button>
             <button onClick={() => this.props.deal()}>Deal</button>
-            <Dealer dealerCards={this.props.dealerCards}/>
+            <Dealer cards={this.props.dealerCards}/>
             {this.getCards().map(card =>
                     <h1 key={card.rank+card.suit}>{card.rank} of {card.suit}</h1>
             )}
