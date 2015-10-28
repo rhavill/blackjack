@@ -1,4 +1,5 @@
-import {Map, List} from 'immutable';
+import {Map, List, fromJS} from 'immutable';
+import {pointValue} from './data/cards';
 
 function setState(state, newState) {
     return state.merge(newState);
@@ -27,7 +28,8 @@ function deal(state) {
     ).push(
         state.get('deck').slice(2,4).setIn([0,'isFaceUp'],true).setIn([1,'isFaceUp'],false)
     );
-    return state.set('deck', deck).set('hands', hands);
+    let scores = getScores(hands);
+    return state.set('deck', deck).set('hands', hands).set('scores', scores);
 }
 
 export default function(state = Map(), action = {type:'none'}) {
@@ -40,4 +42,26 @@ export default function(state = Map(), action = {type:'none'}) {
             return deal(state);
     }
     return state;
+}
+
+function getScores(hands) {
+    let scores = [];
+    for (let i = 0; i < hands.size; i++) {
+        scores[i] = [];
+        let hasAce = false;
+        let minScore = hands.get(i).reduce(function (total, card) {
+            if (card.get('rank') == 'A') {
+                hasAce = true;
+                return total + 1;
+            }
+            else {
+                return total + pointValue[card.get('rank')];
+            }
+        }, 0);
+        scores[i].push(minScore);
+        if (hasAce) {
+            scores[i].push(minScore + 10);
+        }
+    }
+    return fromJS(scores);
 }

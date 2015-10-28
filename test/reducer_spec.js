@@ -121,7 +121,7 @@ describe('reducer', () => {
 
     it('handles DEAL', () => {
         let deck = List.of(
-            Map({rank: '4', suit: 'S'}),
+            Map({rank: 'A', suit: 'S'}),
             Map({rank: '5', suit: 'S'}),
             Map({rank: '6', suit: 'S'}),
             Map({rank: '7', suit: 'S'}),
@@ -140,6 +140,12 @@ describe('reducer', () => {
         expect(nextState.get('hands').get(1).size).to.equal(2);
         expect(nextState.get('hands').get(1).includes( Map({rank: '7', suit: 'S',isFaceUp:false}))).to.equal(true);
         expect(nextState.get('deck').includes( Map({rank: '4', suit: 'S'}))).to.equal(false);
+        expect(nextState.get('scores').size).to.equal(2);
+        expect(nextState.get('scores').get(0).size).to.equal(2);
+        expect(nextState.get('scores').get(1).size).to.equal(1);
+        expect(nextState.get('scores').get(0).contains(6)).to.equal(true);
+        expect(nextState.get('scores').get(0).contains(16)).to.equal(true);
+        expect(nextState.get('scores').get(1).contains(13)).to.equal(true);
     });
 
 });
