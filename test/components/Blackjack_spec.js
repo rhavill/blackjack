@@ -14,9 +14,23 @@ describe('Blackjack', () => {
         );
         const buttons = scryRenderedDOMComponentsWithTag(component, 'button');
 
-        expect(buttons.length).to.equal(2);
+        expect(buttons.length).to.equal(4);
         expect(buttons[0].textContent).to.equal('Shuffle');
         expect(buttons[1].textContent).to.equal('Deal');
+        expect(buttons[2].textContent).to.equal('Hit');
+        expect(buttons[3].textContent).to.equal('Stay');
+        //console.log('dis'+buttons[3].props.disabled)
+    });
+
+    it('hides some buttons', () => {
+        const component = renderIntoDocument(
+            <Blackjack cards={cards} turn="dealer" />
+        );
+        const buttons = scryRenderedDOMComponentsWithTag(component, 'button');
+        expect(buttons[0].attributes.getNamedItem('disabled')).to.equal(null);
+        expect(buttons[1].attributes.getNamedItem('disabled')).to.equal(null);
+        expect(buttons[2].attributes.getNamedItem('disabled').name).to.equal('disabled');
+        expect(buttons[3].attributes.getNamedItem('disabled').name).to.equal('disabled');
     });
 
     it('invokes callback when Shuffle button is clicked', () => {
@@ -41,6 +55,32 @@ describe('Blackjack', () => {
         );
         const buttons = scryRenderedDOMComponentsWithTag(component, 'button');
         Simulate.click(buttons[1]);
+
+        expect(didRun).to.equal(true);
+    });
+
+    it('invokes callback when Hit button is clicked', () => {
+        let didRun = false;
+        const run = () => didRun = true;
+
+        const component = renderIntoDocument(
+            <Blackjack cards={cards} hit={run} turn="player" />
+        );
+        const buttons = scryRenderedDOMComponentsWithTag(component, 'button');
+        Simulate.click(buttons[2]);
+
+        expect(didRun).to.equal(true);
+    });
+
+    it('invokes callback when Stay button is clicked', () => {
+        let didRun = false;
+        const run = () => didRun = true;
+
+        const component = renderIntoDocument(
+            <Blackjack cards={cards} stay={run}  turn="player" />
+        );
+        const buttons = scryRenderedDOMComponentsWithTag(component, 'button');
+        Simulate.click(buttons[3]);
 
         expect(didRun).to.equal(true);
     });

@@ -10,13 +10,19 @@ export const Blackjack = React.createClass({
     getCards: function() {
         return this.props.cards || [];
     },
-    getDealerCards: function() {
-        return this.props.dealerCards || [];
+    isNotPlayerTurn: function() {
+        let notPlayerTurn = false;
+        if (this.props.turn != 'player') {
+            notPlayerTurn = true;
+        }
+        return notPlayerTurn;
     },
     render: function() {
         return <div>
-            <button onClick={() => this.props.shuffle()}>Shuffle</button>
-            <button onClick={() => this.props.deal()}>Deal</button>
+            <button onClick={this.props.shuffle}>Shuffle</button>
+            <button onClick={this.props.deal}>Deal</button>
+            <button disabled={this.isNotPlayerTurn()} onClick={this.props.hit}>Hit</button>
+            <button disabled={this.isNotPlayerTurn()} onClick={this.props.stay}>Stay</button>
             <Dealer cards={this.props.dealerCards}/>
             <Player cards={this.props.playerCards}/>
             {this.getCards().map(card =>
@@ -31,7 +37,8 @@ function mapStateToProps(state) {
         //cards: state.getIn(['vote', 'pair']),
         cards: state.get('deck').toJS(),
         dealerCards: state.get('hands').get(1).toJS(),
-        playerCards: state.get('hands').get(0).toJS()
+        playerCards: state.get('hands').get(0).toJS(),
+        turn: state.get('turn')
     };
 }
 
