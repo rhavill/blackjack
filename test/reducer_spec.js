@@ -144,9 +144,21 @@ describe('reducer', () => {
         expect(nextState.get('scores').get(0).size).to.equal(2);
         expect(nextState.get('scores').get(1).size).to.equal(1);
         expect(nextState.get('scores').get(0).contains(6)).to.equal(true);
-        expect(nextState.get('scores').get(0).contains(16)).to.equal(true);
+        expect(nextState.get('scores').get(0).get(1)).to.equal(16);
         expect(nextState.get('scores').get(1).contains(13)).to.equal(true);
         expect(nextState.get('turn')).to.equal('player');
+
+        let deck2 = List.of(
+            Map({rank: 'A', suit: 'S'}),
+            Map({rank: '10', suit: 'S'}),
+            Map({rank: '6', suit: 'S'}),
+            Map({rank: '8', suit: 'S'}),
+            Map({rank: '7', suit: 'S'})
+        );
+        const initialState2 = Map({deck:deck2});
+        const thirdState = reducer(initialState2, action);
+        expect(thirdState.get('turn')).to.equal('dealer');
+
     });
 
 });

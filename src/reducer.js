@@ -21,6 +21,7 @@ function shuffle(state) {
 }
 
 function deal(state) {
+    let turn = 'player';
     let deck = state.get('deck').skip(4);
     // First 3 cards are face-up. Last card is face-down.
     let hands =  List().push(
@@ -29,7 +30,10 @@ function deal(state) {
         state.get('deck').slice(2,4).setIn([0,'isFaceUp'],true).setIn([1,'isFaceUp'],false)
     );
     let scores = getScores(hands);
-    return state.set('deck', deck).set('hands', hands).set('scores', scores).set('turn', 'player');
+    if (scores.get(0).get(1) == 21) {
+        turn = 'dealer';
+    }
+    return state.set('deck', deck).set('hands', hands).set('scores', scores).set('turn', turn);
 }
 
 export default function(state = Map(), action = {type:'none'}) {
