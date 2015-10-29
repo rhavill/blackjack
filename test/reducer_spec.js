@@ -146,6 +146,7 @@ describe('reducer', () => {
         expect(nextState.get('scores').get(0).contains(6)).to.equal(true);
         expect(nextState.get('scores').get(0).contains(16)).to.equal(true);
         expect(nextState.get('scores').get(1).contains(13)).to.equal(true);
+        expect(nextState.get('turn')).to.equal('player');
     });
 
 });

@@ -29,7 +29,7 @@ function deal(state) {
         state.get('deck').slice(2,4).setIn([0,'isFaceUp'],true).setIn([1,'isFaceUp'],false)
     );
     let scores = getScores(hands);
-    return state.set('deck', deck).set('hands', hands).set('scores', scores);
+    return state.set('deck', deck).set('hands', hands).set('scores', scores).set('turn', 'player');
 }
 
 export default function(state = Map(), action = {type:'none'}) {
