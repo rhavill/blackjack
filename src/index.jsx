@@ -8,7 +8,7 @@ import reducer from './reducer';
 import {Provider} from 'react-redux';
 
 let cards = List.of(
-    Map({rank: 'A', suit: 'S'}),
+    Map({rank: '4', suit: 'S'}),
     Map({rank: '10', suit: 'S'}),
     Map({rank: '6', suit: 'S'}),
     Map({rank: '8', suit: 'S'}),
