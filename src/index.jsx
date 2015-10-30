@@ -3,8 +3,9 @@ import ReactDOM from 'react-dom';
 import {BlackjackContainer} from './components/Blackjack';
 //import cards from './data/cards';
 import {List, Map} from 'immutable';
-import {createStore} from 'redux';
+import {createStore, applyMiddleware} from 'redux';
 import reducer from './reducer';
+import actionMiddleware from './action_middleware';
 import {Provider} from 'react-redux';
 
 let cards = List.of(
@@ -15,7 +16,9 @@ let cards = List.of(
     Map({rank: '7', suit: 'S'})
 );
 
-const store = createStore(reducer);
+const createStoreWithMiddleware = applyMiddleware(actionMiddleware)(createStore);
+const store = createStoreWithMiddleware(reducer);
+
 store.dispatch({
     type: 'SET_STATE',
     state: {
