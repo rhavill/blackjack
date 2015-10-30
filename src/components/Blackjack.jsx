@@ -23,8 +23,8 @@ export const Blackjack = React.createClass({
             <button onClick={this.props.deal}>Deal</button>
             <button disabled={this.isNotPlayerTurn()} onClick={this.props.hit}>Hit</button>
             <button disabled={this.isNotPlayerTurn()} onClick={this.props.stay}>Stay</button>
-            <Dealer cards={this.props.dealerCards}/>
-            <Player cards={this.props.playerCards}/>
+            <Dealer cards={this.props.dealerCards} scores={this.props.dealerScores} />
+            <Player cards={this.props.playerCards} scores={this.props.playerScores} />
             {this.getCards().map(card =>
                     <h1 key={card.rank+card.suit}>{card.rank} of {card.suit}</h1>
             )}
@@ -38,7 +38,9 @@ function mapStateToProps(state) {
         cards: state.get('deck').toJS(),
         dealerCards: state.get('hands').get(1).toJS(),
         playerCards: state.get('hands').get(0).toJS(),
-        turn: state.get('turn')
+        turn: state.get('turn'),
+        dealerScores: state.get('scores').get(1).toJS(),
+        playerScores: state.get('scores').get(0).toJS()
     };
 }
 
