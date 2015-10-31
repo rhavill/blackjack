@@ -49,7 +49,11 @@ function hit(state) {
     let newPlayerHand = playerHand.push(newCard);
     let newHands = state.get('hands').set(0, newPlayerHand);
     let scores = getScores(newHands);
-    return state.set('deck',newDeck).set('hands', newHands).set('scores', scores);
+    let turn = 'player';
+    if (scores.getIn([0, 0]) >= 21) {
+        turn = 'dealer';
+    }
+    return state.set('deck',newDeck).set('hands', newHands).set('scores', scores).set('turn', turn);
 }
 
 export default function(state = Map(), action = {type:'none'}) {
