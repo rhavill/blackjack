@@ -56,6 +56,10 @@ function hit(state) {
     return state.set('deck',newDeck).set('hands', newHands).set('scores', scores).set('turn', turn);
 }
 
+function stay(state) {
+    return state.set('turn', 'dealer');
+}
+
 export default function(state = Map(), action = {type:'none'}) {
     switch (action.type) {
         case 'SET_STATE':
@@ -66,6 +70,8 @@ export default function(state = Map(), action = {type:'none'}) {
             return deal(state);
         case 'HIT':
             return hit(state);
+        case 'STAY':
+            return stay(state);
         case 'DEALER_TURN':
             return dealerTurn(state);
     }

@@ -19,5 +19,12 @@ export default store => dispatch => action => {
                 }, 800);
             }
             break;
+        case 'STAY':
+            if (state.get('turn') == 'dealer') {
+                setTimeout(function() {
+                    dispatch(dealerTurn());
+                }, 800);
+            }
+            break;
     }
 }

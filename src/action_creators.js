@@ -23,6 +23,12 @@ export function hit() {
     };
 }
 
+export function stay() {
+    return {
+        type: 'STAY'
+    };
+}
+
 export function dealerTurn() {
     return {
         type: 'DEALER_TURN'
