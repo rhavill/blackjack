@@ -26,7 +26,7 @@ export const Blackjack = React.createClass({
             <Dealer turn={this.props.turn} cards={this.props.dealerCards} scores={this.props.dealerScores} />
             <Player cards={this.props.playerCards} scores={this.props.playerScores} />
             {this.getCards().map(card =>
-                    <h1 key={card.rank+card.suit}>{card.rank} of {card.suit}</h1>
+                    <h1 key={'deck'+card.rank+card.suit}>{card.rank} of {card.suit}</h1>
             )}
         </div>;
     }
