@@ -48,7 +48,8 @@ function hit(state) {
     let newCard = state.get('deck').take(1).get(0).set('isFaceUp', true);
     let newPlayerHand = playerHand.push(newCard);
     let newHands = state.get('hands').set(0, newPlayerHand);
-    return state.set('deck',newDeck).set('hands', newHands);
+    let scores = getScores(newHands);
+    return state.set('deck',newDeck).set('hands', newHands).set('scores', scores);
 }
 
 export default function(state = Map(), action = {type:'none'}) {
