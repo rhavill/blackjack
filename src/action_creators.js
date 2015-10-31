@@ -17,6 +17,12 @@ export function deal() {
     };
 }
 
+export function hit() {
+    return {
+        type: 'HIT'
+    };
+}
+
 export function dealerTurn() {
     return {
         type: 'DEALER_TURN'

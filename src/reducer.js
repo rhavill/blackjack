@@ -42,6 +42,11 @@ function dealerTurn(state) {
     return state.setIn(['hands', 1, 1, 'isFaceUp'], true);
 }
 
+function hit(state) {
+    console.log('reducer hit');
+    return state;
+}
+
 export default function(state = Map(), action = {type:'none'}) {
     switch (action.type) {
         case 'SET_STATE':
@@ -50,6 +55,8 @@ export default function(state = Map(), action = {type:'none'}) {
             return shuffle(state);
         case 'DEAL':
             return deal(state);
+        case 'HIT':
+            return hit(state);
         case 'DEALER_TURN':
             return dealerTurn(state);
     }

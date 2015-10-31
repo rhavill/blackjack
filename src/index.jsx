@@ -10,10 +10,13 @@ import {BlackjackContainer} from './components/Blackjack';
 //import cards from './data/cards';
 
 let cards = List.of(
-    Map({rank: 'A', suit: 'S'}),
+    Map({rank: '2', suit: 'S'}),
     Map({rank: '10', suit: 'S'}),
     Map({rank: '6', suit: 'S'}),
     Map({rank: '8', suit: 'S'}),
+    Map({rank: '2', suit: 'S'}),
+    Map({rank: '3', suit: 'S'}),
+    Map({rank: '4', suit: 'S'}),
     Map({rank: '7', suit: 'S'})
 );
 
