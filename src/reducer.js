@@ -36,6 +36,12 @@ function deal(state) {
     return state.set('deck', deck).set('hands', hands).set('scores', scores).set('turn', turn);
 }
 
+function dealerTurn(state) {
+    let scores = getScores(state.get('hands'));
+    console.log('dealer turn reducer',scores);
+    return state;
+}
+
 export default function(state = Map(), action = {type:'none'}) {
     switch (action.type) {
         case 'SET_STATE':
@@ -44,6 +50,8 @@ export default function(state = Map(), action = {type:'none'}) {
             return shuffle(state);
         case 'DEAL':
             return deal(state);
+        case 'DEALER_TURN':
+            return dealerTurn(state);
     }
     return state;
 }

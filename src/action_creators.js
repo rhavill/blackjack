@@ -9,3 +9,9 @@ export function deal() {
         type: 'DEAL'
     };
 }
+
+export function dealerTurn() {
+    return {
+        type: 'DEALER_TURN'
+    };
+}
