@@ -5,7 +5,7 @@ import {createStore, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
 import reducer from './reducer';
 import actionMiddleware from './action_middleware';
-import {dealerTurn} from './action_creators';
+import {setState} from './action_creators';
 import {BlackjackContainer} from './components/Blackjack';
 //import cards from './data/cards';
 
@@ -20,14 +20,11 @@ let cards = List.of(
 const createStoreWithMiddleware = applyMiddleware(actionMiddleware)(createStore);
 const store = createStoreWithMiddleware(reducer);
 
-store.dispatch({
-    type: 'SET_STATE',
-    state: {
-        deck: cards,
-        hands: [ [], [] ],
-        scores: [ [], [] ]
-    }
-});
+store.dispatch(setState({
+    deck: cards,
+    hands: [ [], [] ],
+    scores: [ [], [] ]
+}));
 
 ReactDOM.render(
     <Provider store={store}>
