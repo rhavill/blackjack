@@ -43,8 +43,12 @@ function dealerTurn(state) {
 }
 
 function hit(state) {
-    console.log('reducer hit');
-    return state;
+    let newDeck = state.get('deck').skip(1);
+    let playerHand = state.get('hands').get(0);
+    let newCard = state.get('deck').take(1).get(0).set('isFaceUp', true);
+    let newPlayerHand = playerHand.push(newCard);
+    let newHands = state.get('hands').set(0, newPlayerHand);
+    return state.set('deck',newDeck).set('hands', newHands);
 }
 
 export default function(state = Map(), action = {type:'none'}) {
