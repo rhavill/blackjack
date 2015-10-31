@@ -7,7 +7,9 @@ export default store => dispatch => action => {
         case 'DEAL':
             let state = store.getState();
             if (state.get('turn') == 'dealer') {
-                dispatch(dealerTurn());
+                setTimeout(function() {
+                    dispatch(dealerTurn());
+                }, 800);
             }
             break;
     }

@@ -39,7 +39,7 @@ function deal(state) {
 function dealerTurn(state) {
     let scores = getScores(state.get('hands'));
     console.log('dealer turn reducer',scores);
-    return state;
+    return state.setIn(['hands', 1, 1, 'isFaceUp'], true);
 }
 
 export default function(state = Map(), action = {type:'none'}) {
