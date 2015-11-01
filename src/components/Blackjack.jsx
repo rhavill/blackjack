@@ -17,12 +17,44 @@ export const Blackjack = React.createClass({
         }
         return notPlayerTurn;
     },
+    getWinner: function() {
+        let winner = null;
+        if (this.props.turn == 'fini') {
+            let dealerScore = 0, playerScore = 0;
+            if (this.props.dealerScores.length > 1 && this.props.dealerScores[1] < 22) {
+                dealerScore = this.props.dealerScores[1];
+            }
+            else if (this.props.dealerScores[0] < 22) {
+                dealerScore = this.props.dealerScores[0];
+            }
+            if (this.props.playerScores.length > 1 && this.props.playerScores[1] < 22) {
+                playerScore = this.props.playerScores[1];
+            }
+            else if (this.props.playerScores[0] < 22) {
+                playerScore = this.props.playerScores[0];
+            }
+            if (dealerScore > playerScore) {
+                winner = 'dealer';
+            }
+            else if (dealerScore < playerScore) {
+                winner = 'player';
+            }
+            else {
+                winner = 'push';
+            }
+        }
+        return winner;
+    },
     render: function() {
         return <div>
             <button onClick={this.props.shuffle}>Shuffle</button>
             <button onClick={this.props.deal}>Deal</button>
             <button disabled={this.isNotPlayerTurn()} onClick={this.props.hit}>Hit</button>
             <button disabled={this.isNotPlayerTurn()} onClick={this.props.stay}>Stay</button>
+            {this.getWinner() ?
+                <h1>winner {this.getWinner()}</h1> : ''
+
+            }
             <Dealer turn={this.props.turn} cards={this.props.dealerCards} scores={this.props.dealerScores} />
             <Player cards={this.props.playerCards} scores={this.props.playerScores} />
             {this.getCards().map(card =>
