@@ -8,7 +8,10 @@ export default class Score extends React.Component {
         if ((typeof this.props.scores != 'undefined') &&
                 (typeof this.props.scores[0] != 'undefined')) {
             score = this.props.scores[0].toString();
-            if ((typeof this.props.scores[1] != 'undefined') &&
+            if (score > 21) {
+                score = 'Bust';
+            }
+            else if ((typeof this.props.scores[1] != 'undefined') &&
                 (this.props.scores[1] <= 21)) {
                 let score2 = this.props.scores[1];
                 score += ' / ' + score2.toString();
@@ -22,9 +25,13 @@ export default class Score extends React.Component {
             fontSize: '1.5em',
             fontWeight: 'bold'
         };
+        let score = this.getScore();
+        if (score == 'Bust') {
+            scoreStyle.color = '#ff0000';
+        }
         return (
             <div className="score" style={scoreStyle}>
-                {this.getScore()}
+                {score}
             </div>
         )
     }
