@@ -1,4 +1,4 @@
-import {dealerShow, dealerTurn} from './action_creators';
+import {dealerShow, dealerTurn,resetDeck} from './action_creators';
 
 export default store => next => action => {
 
@@ -20,6 +20,9 @@ export default store => next => action => {
             setTimeout(function () {
                 store.dispatch(dealerTurn());
             }, 1200);
+        }
+        else if (turn == 'fini') {
+            store.dispatch(resetDeck());
         }
     }
 

@@ -47,3 +47,9 @@ export function dealerTurn() {
         type: 'DEALER_TURN'
     };
 }
+
+export function resetDeck() {
+    return {
+        type: 'RESET_DECK'
+    };
+}

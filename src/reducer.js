@@ -94,6 +94,10 @@ function stay(state) {
     return state.set('turn', 'dealer');
 }
 
+function resetDeck(state) {
+    return setState(state, {deck: cards});
+}
+
 export default function(state = Map(), action = {type:'none'}) {
     switch (action.type) {
         case 'SET_STATE':
@@ -112,6 +116,8 @@ export default function(state = Map(), action = {type:'none'}) {
             return dealerShow(state);
         case 'DEALER_TURN':
             return dealerTurn(state);
+        case 'RESET_DECK':
+            return resetDeck(state);
     }
     return state;
 }
