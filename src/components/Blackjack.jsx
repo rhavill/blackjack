@@ -47,8 +47,7 @@ export const Blackjack = React.createClass({
     },
     render: function() {
         return <div>
-            <button onClick={this.props.shuffle}>Shuffle</button>
-            <button onClick={this.props.deal}>Deal</button>
+            <button onClick={this.props.shuffle}>Deal</button>
             <button disabled={this.isNotPlayerTurn()} onClick={this.props.hit}>Hit</button>
             <button disabled={this.isNotPlayerTurn()} onClick={this.props.stay}>Stay</button>
             {this.getWinner() ? <h1>winner {this.getWinner()}</h1> : ''}
