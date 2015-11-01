@@ -58,7 +58,6 @@ function dealerTurn(state) {
         hands = state.get('hands').set(1, dealerHand);
     }
     let scores = getScores(hands);
-    console.log('dealer turn reducer',score);
     return state
         .set('turn', turn)
         .set('deck', deck)

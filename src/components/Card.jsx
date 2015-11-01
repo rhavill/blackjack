@@ -1,4 +1,5 @@
 import React from 'react';
+import PureRenderMixin from 'react-addons-pure-render-mixin';
 
 export default class Card extends React.Component {
 
@@ -33,3 +34,5 @@ export default class Card extends React.Component {
         )
     }
 }
+
+Card.mixins = [PureRenderMixin];

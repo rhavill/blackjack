@@ -1,5 +1,5 @@
 import React from 'react';
-
+import PureRenderMixin from 'react-addons-pure-render-mixin';
 import Card from './Card';
 import Score from './Score';
 
@@ -19,3 +19,5 @@ export default class Player extends React.Component {
         )
     }
 }
+
+Player.mixins = [PureRenderMixin];

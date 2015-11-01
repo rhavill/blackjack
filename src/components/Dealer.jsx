@@ -1,5 +1,5 @@
 import React from 'react';
-
+import PureRenderMixin from 'react-addons-pure-render-mixin';
 import Card from './Card';
 import Score from './Score';
 
@@ -20,3 +20,5 @@ export default class Dealer extends React.Component {
         )
     }
 }
+
+Dealer.mixins = [PureRenderMixin];
