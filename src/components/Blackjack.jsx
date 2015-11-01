@@ -34,7 +34,6 @@ export const Blackjack = React.createClass({
 
 function mapStateToProps(state) {
     return {
-        //cards: state.getIn(['vote', 'pair']),
         cards: state.get('deck').toJS(),
         dealerCards: state.get('hands').get(1).toJS(),
         playerCards: state.get('hands').get(0).toJS(),

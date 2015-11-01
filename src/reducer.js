@@ -48,6 +48,7 @@ function dealerTurn(state) {
         }
         return bestScore;
     }, 0);
+    console.log('dealer turn score', score);
     if (score > 16) {
         turn =  'fini';
     }
