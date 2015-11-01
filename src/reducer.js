@@ -46,13 +46,10 @@ function dealerTurn(state) {
     let hands = state.get('hands');
     let dealerHand = state.get('hands').get(1);
     let dealerScores = getScores(state.get('hands')).get(1);
-    let score = dealerScores.reduce(function (bestScore, currentScore) {
-        if (currentScore < 22 && currentScore > bestScore) {
-            return currentScore;
-        }
-        return bestScore;
-    }, 0);
-    console.log('dealer turn score', score);
+    let score = dealerScores.get(0);
+    if (dealerScores.get(1) && dealerScores.get(1) < 22) {
+        score = dealerScores.get(1);
+    }
     if (score > 16) {
         turn =  'fini';
     }
