@@ -29,6 +29,12 @@ export function stay() {
     };
 }
 
+export function dealerShow() {
+    return {
+        type: 'DEALER_SHOW'
+    };
+}
+
 export function dealerTurn() {
     return {
         type: 'DEALER_TURN'

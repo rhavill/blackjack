@@ -36,6 +36,10 @@ function deal(state) {
     return state.set('deck', deck).set('hands', hands).set('scores', scores).set('turn', turn);
 }
 
+function dealerShow(state) {
+    return state.setIn(['hands', 1, 1, 'isFaceUp'], true);
+}
+
 function dealerTurn(state) {
     let turn = 'dealer';
     let deck = state.get('deck');
@@ -97,6 +101,8 @@ export default function(state = Map(), action = {type:'none'}) {
             return hit(state);
         case 'STAY':
             return stay(state);
+        case 'DEALER_SHOW':
+            return dealerShow(state);
         case 'DEALER_TURN':
             return dealerTurn(state);
     }

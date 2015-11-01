@@ -1,17 +1,29 @@
-import {dealerTurn} from './action_creators';
+import {dealerShow, dealerTurn} from './action_creators';
 
 export default store => next => action => {
+
     let returnValue = next(action);
 
-    if (['DEAL', 'HIT', 'STAY', 'DEALER_TURN'].indexOf(action.type) > -1) {
-        let state = store.getState();
-        let turn = state.get('turn');
+    let state = store.getState();
+    let turn = state.get('turn');
+
+    if (['DEAL', 'HIT', 'STAY'].indexOf(action.type) > -1) {
+        if (turn == 'dealer') {
+            setTimeout(function () {
+                store.dispatch(dealerShow());
+            }, 1200);
+        }
+    }
+
+    if (['DEALER_SHOW', 'DEALER_TURN'].indexOf(action.type) > -1) {
         if (turn == 'dealer') {
             setTimeout(function () {
                 store.dispatch(dealerTurn());
             }, 1200);
         }
     }
+
     return returnValue;
+
 }
 
