@@ -9,12 +9,17 @@ export default class Dealer extends React.Component {
     }
 
     render() {
+        let cards = this.getCards();
+        let showScore = false
+        if (cards.length > 1 && cards[1].isFaceUp == true) {
+            showScore = true;
+        }
         return (
             <div id="dealer">
                 <h1>dealer</h1>
-                {this.props.turn == 'dealer' || this.props.turn == 'fini' ?
+                {showScore ?
                     <Score {...this.props} /> : ''}
-                {this.getCards().map(card => <Card key={card.rank+card.suit} card={card} />
+                {cards.map(card => <Card key={card.rank+card.suit} card={card} />
                 )}
             </div>
         )
