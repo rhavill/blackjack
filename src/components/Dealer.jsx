@@ -12,7 +12,7 @@ export default class Dealer extends React.Component {
         return (
             <div id="dealer">
                 <h1>dealer</h1>
-                {this.props.turn == 'dealer' ?
+                {this.props.turn == 'dealer' || this.props.turn == 'fini' ?
                     <Score {...this.props} /> : ''}
                 {this.getCards().map(card => <Card key={card.rank+card.suit} card={card} />
                 )}
