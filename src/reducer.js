@@ -41,8 +41,8 @@ function dealerTurn(state) {
     let deck = state.get('deck');
     let hands = state.get('hands');
     let dealerHand = state.get('hands').get(1);
-    let scores = getScores(state.get('hands')).get(1);
-    let score = scores.reduce(function (bestScore, currentScore) {
+    let dealerScores = getScores(state.get('hands')).get(1);
+    let score = dealerScores.reduce(function (bestScore, currentScore) {
         if (currentScore < 22 && currentScore > bestScore) {
             return currentScore;
         }
@@ -57,11 +57,13 @@ function dealerTurn(state) {
         dealerHand = dealerHand.push(card);
         hands = state.get('hands').set(1, dealerHand);
     }
+    let scores = getScores(hands);
     console.log('dealer turn reducer',score);
     return state
         .set('turn', turn)
         .set('deck', deck)
         .set('hands', hands)
+        .set('scores', scores)
         .setIn(['hands', 1, 1, 'isFaceUp'], true);
 }
 
