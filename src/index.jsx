@@ -29,6 +29,20 @@ store.dispatch(setState({
     scores: [ [], [] ]
 }));
 
+//let autoDispatched = false;
+//let unsubscribe = store.subscribe(function() {
+//    let turn = store.getState().get('turn');
+//    let autoDispatched = store.getState('autoDispatched');
+//    console.log('store maybe changed! new turn?',turn), 'auto?', autoDispatched;
+//    if (turn == 'dealer' && !autoDispatched) {
+//        autoDispatched = true;
+//        store.setState(')
+//        store.dispatch({type:'DEALER_TURN'});
+//    }
+//    else {
+//        autoDispatched = false;
+//    }
+//});
 ReactDOM.render(
     <Provider store={store}>
         <BlackjackContainer />

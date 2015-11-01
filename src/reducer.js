@@ -39,7 +39,7 @@ function deal(state) {
 function dealerTurn(state) {
     let scores = getScores(state.get('hands'));
     console.log('dealer turn reducer',scores);
-    return state.setIn(['hands', 1, 1, 'isFaceUp'], true);
+    return state.setIn(['hands', 1, 1, 'isFaceUp'], true).set('turn', 'fini');
 }
 
 function hit(state) {

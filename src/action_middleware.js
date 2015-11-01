@@ -1,16 +1,19 @@
 import {dealerTurn} from './action_creators';
 
-export default store => dispatch => action => {
+export default store => next => action => {
+    console.log('middleware gonna next', action);
+    let returnValue = next(action);
 
-    dispatch(action);
-
-    if (['DEAL', 'HIT', 'STAY'].indexOf(action.type) > -1) {
+    if (['DEAL', 'HIT', 'STAY', 'DEALER_TURN'].indexOf(action.type) > -1) {
         let state = store.getState();
-        if (state.get('turn') == 'dealer') {
+        let turn = state.get('turn');
+        console.log('turn is now',turn);
+        if (turn == 'dealer') {
             setTimeout(function () {
-                dispatch(dealerTurn());
+                store.dispatch(dealerTurn());
             }, 1200);
         }
     }
-
+    return returnValue;
 }
+
