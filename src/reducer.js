@@ -64,8 +64,7 @@ function dealerTurn(state) {
         .set('turn', turn)
         .set('deck', deck)
         .set('hands', hands)
-        .set('scores', scores)
-        .setIn(['hands', 1, 1, 'isFaceUp'], true);
+        .set('scores', scores);
 }
 
 function hit(state) {
