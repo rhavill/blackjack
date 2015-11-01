@@ -5,6 +5,13 @@ export function setState(state) {
     }
 }
 
+export function setInitialState(state) {
+    return {
+        type: 'SET_INITIAL_STATE',
+        state: state
+    }
+}
+
 export function shuffle() {
     return {
         type: 'SHUFFLE'

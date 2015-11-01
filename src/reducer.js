@@ -1,8 +1,17 @@
 import {Map, List, fromJS} from 'immutable';
-import {pointValue} from './data/cards';
+import cards, {pointValue} from './data/cards';
 
 function setState(state, newState) {
     return state.merge(newState);
+}
+
+function setInitialState(state) {
+    let initialState = {
+        deck: cards,
+        hands: [ [], [] ],
+        scores: [ [], [] ]
+    };
+    return setState(state, initialState);
 }
 
 function shuffle(state) {
@@ -89,6 +98,8 @@ export default function(state = Map(), action = {type:'none'}) {
     switch (action.type) {
         case 'SET_STATE':
             return setState(state, action.state);
+        case 'SET_INITIAL_STATE':
+            return setInitialState(state);
         case 'SHUFFLE':
             return shuffle(state);
         case 'DEAL':
