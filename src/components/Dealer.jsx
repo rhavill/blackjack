@@ -16,7 +16,6 @@ export default class Dealer extends React.Component {
         }
         return (
             <div id="dealer">
-                <h1>dealer</h1>
                 {showScore ?
                     <Score {...this.props} /> : ''}
                 {cards.map(card => <Card key={card.rank+card.suit} card={card} />
