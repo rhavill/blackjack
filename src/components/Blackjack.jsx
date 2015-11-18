@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Card from './Card';
 
-export default class Blackjack {
+export default class Blackjack extends Component {
     getCards() {
         return this.props.cards || [];
     }
