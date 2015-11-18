@@ -1,15 +1,16 @@
-import React from 'react';
+import React, {Component} from 'react';
 import Card from './Card';
 
-export default React.createClass({
-    getCards: function() {
+export default class Blackjack {
+    getCards() {
         return this.props.cards || [];
-    },
-    render: function() {
+    }
+
+    render() {
         return <div className="cards">
             {this.getCards().map(card =>
                 <Card key={card.id} card={card} />
             )}
         </div>;
     }
-});
+}

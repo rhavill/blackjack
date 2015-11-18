@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {Component} from 'react';
 
-export default React.createClass({
-    render: function() {
+export default class Card extends Component {
+    render() {
         let style = {
             float: 'left',
             backgroundImage: 'url("cards.png")',
@@ -13,4 +13,4 @@ export default React.createClass({
             '0px 123px';
         return <div style={style} className="card" />;
     }
-});
+}
