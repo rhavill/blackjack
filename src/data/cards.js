@@ -13,7 +13,7 @@ suits.map(function(suit, suitIndex) {
             suit: suit,
             points: points,
             backgroundPosition: backgroundX + 'px ' + backgroundY + 'px',
-            isFaceUp: true
+            isFaceUp: false
         });
     });
 });
