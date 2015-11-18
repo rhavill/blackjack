@@ -29,7 +29,7 @@
     "immutable": "~3.7.5"
   },
   "dependencies": {
-    "react-dom": "~0.14.0",
-    "react": "~0.14.0"
+    "react": "^0.14.2",
+    "react-dom": "^0.14.2"
   }
 }
