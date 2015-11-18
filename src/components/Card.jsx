@@ -8,8 +8,8 @@ export default class Card extends Component {
             height: '123px',
             width: '79px'
         };
-        style.backgroundPosition = this.props.card.isFaceUp ?
-            this.props.card.backgroundPosition :
+        style.backgroundPosition = this.props.isFaceUp ?
+            this.props.backgroundPosition :
             '0px 123px';
         return <div style={style} className="card" />;
     }

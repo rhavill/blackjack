@@ -9,7 +9,7 @@ export default class Blackjack extends Component {
     render() {
         return <div className="cards">
             {this.getCards().map(card =>
-                <Card key={card.id} card={card} />
+                <Card key={card.id} {...card} />
             )}
         </div>;
     }
