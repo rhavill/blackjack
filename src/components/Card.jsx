@@ -5,12 +5,12 @@ export default React.createClass({
         let style = {
             float: 'left',
             backgroundImage: 'url("cards.png")',
-            height: this.props.card.height,
-            width: this.props.card.width
+            height: '123px',
+            width: '79px'
         };
         style.backgroundPosition = this.props.card.isFaceUp ?
             this.props.card.backgroundPosition :
-            '0px ' + this.props.card.height;
-        return <div style={style} className="card"  />;
+            '0px 123px';
+        return <div style={style} className="card" />;
     }
 });

@@ -12,8 +12,6 @@ suits.map(function(suit, suitIndex) {
             rank: rank,
             suit: suit,
             points: points,
-            height: '123px',
-            width: '79px',
             backgroundPosition: backgroundX + 'px ' + backgroundY + 'px',
             isFaceUp: false
         });
