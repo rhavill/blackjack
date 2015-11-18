@@ -1,12 +1,23 @@
 let cards = [];
+let suits = ['C', 'D', 'H', 'S'];
+let ranks = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
 
-['C', 'D', 'H', 'S'].map(function(suit) {
-    ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
-            .map(function(rank) {
-        cards.push({rank: rank, suit: suit});
+suits.map(function(suit, suitIndex) {
+    ranks.map(function(rank, rankIndex) {
+        let points = rankIndex < 10 ? rankIndex + 1 : 10;
+        let backgroundX = -rankIndex * 79;
+        let backgroundY = -suitIndex * 123;
+        cards.push({
+            id: 13 * suitIndex + rankIndex + 1,
+            rank: rank,
+            suit: suit,
+            points: points,
+            height: '123px',
+            width: '79px',
+            backgroundPosition: backgroundX + 'px ' + backgroundY + 'px',
+            isFaceUp: false
+        });
     });
-
-
 });
 
 export default cards;

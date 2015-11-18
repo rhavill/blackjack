@@ -1,4 +1,5 @@
 import React from 'react';
+import Card from './Card';
 
 export default React.createClass({
     getCards: function() {
@@ -7,7 +8,7 @@ export default React.createClass({
     render: function() {
         return <div className="cards">
             {this.getCards().map(card =>
-                    <h1>{card.rank} of {card.suit}</h1>
+                <Card key={card.id} card={card} />
             )}
         </div>;
     }
