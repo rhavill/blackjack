@@ -23,16 +23,28 @@ function deck(state, action) {
     }
 }
 
-function player(state, action) {
+function player(state, action, nextCardIndex) {
     switch (action.type) {
-        case 'DEAL_PLAYER_CARD':
-            return state.push(action.card);
+        case 'DEAL':
+            if (nextCardIndex % 2 == 0) {
+                return state.push(nextCardIndex);
+            }
         default:
             return state;
     }
 }
 
-export default function(state = Map(), action) {
+function nextCardIndex(state, action) {
+    switch (action.type) {
+        case 'DEAL':
+            return state + 1;
+        default:
+            return state;
+    }
+}
+
+export default function(state, action) {
+    state = state || Map();
     switch (action.type) {
         case 'SET_INITIAL_STATE':
             return setInitialState(state, action);
@@ -40,9 +52,10 @@ export default function(state = Map(), action) {
             return setState(state, action);
         default:
             return Map({
-                deck: deck(state.deck, action),
-                turn: turn(state.turn, action)
-                //player: player(state.player)
+                deck: deck(state.get('deck'), action),
+                turn: turn(state.get('turn'), action),
+                player: player(state.get('player'), action, state.get('nextCardIndex')),
+                nextCardIndex: nextCardIndex(state.get('nextCardIndex'), action)
             });
     }
     return state;

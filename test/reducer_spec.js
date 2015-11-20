@@ -2,6 +2,7 @@ import {List, Map, fromJS} from 'immutable';
 import {expect} from 'chai';
 import reducer from '../src/reducer';
 import cards from '../src/data/cards';
+import setInitialState from '../src/data/state';
 
 let jsDeck = [
     {rank: 'A', suit: 'C'},
@@ -78,10 +79,7 @@ describe('reducer', () => {
             turn: 'dealer'
         };
         const nextState = reducer(initialState, action);
-        expect(nextState).to.equal(fromJS({
-            deck: undefined,
-            turn: 'dealer'
-        }));
+        expect(nextState.get('turn')).to.equal('dealer');
     });
 
     it('handles SET_DECK', () => {
@@ -91,23 +89,18 @@ describe('reducer', () => {
             deck: immutableDeck
         };
         const nextState = reducer(initialState, action);
-        expect(nextState).to.equal(fromJS({
-            deck: jsDeck,
-            turn: undefined
-        }));
+        expect(nextState.get('deck')).to.equal(fromJS(jsDeck));
     });
 
-    //it('handles DEAL_PLAYER_CARD', () => {
-    //    const initialState = Map();
-    //    const action = {
-    //        type: 'DEAL_PLAYER_CARD',
-    //        card: immutableDeck
-    //    };
-    //    const nextState = reducer(initialState, action);
-    //    expect(nextState).to.equal(fromJS({
-    //        deck: jsDeck,
-    //        turn: undefined
-    //    }));
-    //});
+    it('handles DEAL', () => {
+        const initialState = setInitialState();
+        const action = {
+            type: 'DEAL'
+        };
+        const nextState = reducer(initialState, action);
+        expect(nextState.get('nextCardIndex')).to.equal(1);
+        expect(nextState.get('player')).to.equal(fromJS([0]));
+        console.log('next', initialState.get('player') === nextState.get('player'));
+    });
 
 });
