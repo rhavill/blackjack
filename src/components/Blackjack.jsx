@@ -2,8 +2,9 @@ import React, {Component} from 'react';
 import Card from './Card';
 
 export default class Blackjack extends Component {
+
     getCards() {
-        return this.props.cards || [];
+        return this.props.cards;
     }
 
     render() {
@@ -14,3 +15,7 @@ export default class Blackjack extends Component {
         </div>;
     }
 }
+
+Blackjack.defaultProps = {
+    cards: []
+};
