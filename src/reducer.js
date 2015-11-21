@@ -23,11 +23,11 @@ function deck(state, action) {
     }
 }
 
-function player(state, action, nextCardIndex) {
+function player(state, action, cardIndex) {
     switch (action.type) {
         case 'DEAL':
-            if (nextCardIndex % 2 == 0) {
-                return state.push(nextCardIndex);
+            if (cardIndex % 2 == 0) {
+                return state.push(cardIndex);
             }
         default:
             return state;

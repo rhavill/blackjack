@@ -100,7 +100,6 @@ describe('reducer', () => {
         const nextState = reducer(initialState, action);
         expect(nextState.get('nextCardIndex')).to.equal(1);
         expect(nextState.get('player')).to.equal(fromJS([0]));
-        console.log('next', initialState.get('player') === nextState.get('player'));
     });
 
 });
