@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <title>blackjack</title>
     <style>
+
+        body {
+            background: linear-gradient(to right, darkgreen, green);
+        }
+
+        /* Card animations */
         .flip-appear {
             transform: rotateY( 180deg );
         }
@@ -15,10 +21,58 @@
             transition: opacity 1s ease-in;
         }
 
-        body {
-            background: linear-gradient(to right, darkgreen, green);
+        /* Buttons */
+        .button {
+            font-family: Impact;
+            height: 40px;
+            width: 60px;
+            cursor: pointer;
+            margin: 0px 7px 0px 7px;
+            float: left;
         }
-    
+        .button .outer {
+            width: 100%;
+            height: 100%;
+            padding: 5px;
+            background: rgba(0,0,0,0.65);
+            border-radius: 14px;
+            transform: perspective(500px) rotateX(35deg);
+        }
+        .button .outer .height {
+            height: 100%;
+            margin-top: -15px;
+            padding-bottom: 15px;
+            background: #39a02d;
+            border-radius: 16px;
+            box-shadow: rgba(0,0,0,0.85) 0px 1px 1px, inset rgba(0,0,0,0.35) 0px -2px 8px;
+            transition: all 0.1s ease-in-out;
+        }
+        .button:hover .outer .height {
+            margin-top: -12px;
+            padding-bottom: 12px;
+        }
+        .button:active .outer .height {
+            margin-top: 0px;
+            padding-bottom: 0px;
+        }
+        .button .outer .height .inner {
+            line-height: 2.3em;
+            font-size: 20px;
+            color: white;
+            letter-spacing: .05em;
+            height: 100%;
+            text-align: center;
+            background: #44d135;
+            background: linear-gradient(top, #80ec75 0%,#43d034 100%);
+            border-radius: 12px;
+            transition: all 0.1s ease-in-out;
+        }
+
+        .button:active .outer .height .inner{
+            border-radius: 16px;
+            background: linear-gradient(top, #1d7d12 0%,#4fd342 100%);
+        }
+
     </style>
 </head>
 <body>

@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {createStore} from 'redux'
 import {Map} from 'immutable';
-import { Provider } from 'react-redux'
+import {Provider} from 'react-redux'
 
 import reducer from './reducer';
 import Blackjack from './components/Blackjack';
@@ -15,6 +15,6 @@ let store = createStore(reducer, setInitialState());
 ReactDOM.render(
     <Provider store={store}>
         <Blackjack cards={cards} />
-        </Provider>,
+    </Provider>,
     document.getElementById('blackjack')
 );
