@@ -13,7 +13,7 @@ export default class Card extends Component {
         let cardStyle = {
             width:'100%',
             height:'100%',
-            transition: 'transform .5s',
+            transition: 'transform 1s',
             transformStyle: 'preserve-3d',
         };
 

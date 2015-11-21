@@ -7,6 +7,13 @@
         .flip-appear {
             transform: rotateY( 180deg );
         }
+        .fadein-appear {
+            opacity: 0.01;
+        }
+        .fadein-appear.fadein-appear-active {
+            opacity: 1;
+            transition: opacity 1s ease-in;
+        }
 
         body {
             background-color: green;

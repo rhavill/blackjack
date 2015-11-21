@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+
 import Card from './Card';
 
 export default class Blackjack extends Component {
@@ -10,7 +12,14 @@ export default class Blackjack extends Component {
     render() {
         return <div style={{backgroundColor:'green'}}>
             {this.getCards().map(card =>
+                <ReactCSSTransitionGroup   key={card.id}
+                                      transitionName="fadein"
+                                      transitionAppear={true}
+                                      transitionAppearTimeout={500}
+                                      transitionEnterTimeout={500}
+                                      transitionLeaveTimeout={300}>
                     <Card key={card.id} {...card} />
+                </ReactCSSTransitionGroup>
             )}
         </div>;
     }
