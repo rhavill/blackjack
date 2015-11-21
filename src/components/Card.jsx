@@ -35,13 +35,18 @@ export default class Card extends Component {
             position: 'absolute',
             margin: '0',
             backfaceVisibility: 'hidden',
-            transform: 'rotateY( 180deg )'
         };
 
+        if (this.props.isFaceUp) {
+            backStyle.transform = 'rotateY( 180deg )';
+        }
+        else {
+            frontStyle.transform = 'rotateY( 180deg )';
+        }
         return <div className="card-container" style={containerStyle}>
             <ReactCSSTransitionGroup  key={this.props.id}
                                       transitionName="flip"
-                                      transitionAppear={true}
+                                      transitionAppear={this.props.isFaceUp}
                                       transitionAppearTimeout={500}
                                       transitionEnter={false}
                                       transitionLeave={false}  >
