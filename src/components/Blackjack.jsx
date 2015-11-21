@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import { connect } from 'react-redux'
 
 import Card from './Card';
 
-export default class Blackjack extends Component {
+class Blackjack extends Component {
 
     getCards() {
         return this.props.cards;
@@ -25,6 +26,15 @@ export default class Blackjack extends Component {
     }
 }
 
+function select(state) {
+    return {
+        turn: state.get('turn'),
+        cards: state.get('deck')
+    }
+}
+
 Blackjack.defaultProps = {
     cards: []
 };
+
+export default connect(select)(Blackjack)
