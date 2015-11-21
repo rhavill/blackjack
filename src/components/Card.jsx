@@ -43,8 +43,8 @@ export default class Card extends Component {
                                       transitionName="flip"
                                       transitionAppear={true}
                                       transitionAppearTimeout={500}
-                                      transitionEnterTimeout={500}
-                                      transitionLeaveTimeout={300}>
+                                      transitionEnter={false}
+                                      transitionLeave={false}  >
                 <div key={this.props.id} className="card" style={cardStyle}>
                     <div  className="back" style={backStyle}></div>
                     <div className="front" style={frontStyle}></div>
