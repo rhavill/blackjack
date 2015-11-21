@@ -22,7 +22,8 @@ describe('Card', () => {
             classes.push(div.className);
         });
         expect(classes[0]).to.equal('card-container');
-        expect(classes[1]).to.equal('card');
+        expect(classes[1]).to.equal('card flip-appear');
+        expect(classes[1]).to.contain('card');
         expect(classes[2]).to.equal('back');
         expect(classes[3]).to.equal('front');
         expect(divs.length).to.equal(4);

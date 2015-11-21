@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 export default class Card extends Component {
     render() {
@@ -12,10 +13,8 @@ export default class Card extends Component {
         let cardStyle = {
             width:'100%',
             height:'100%',
-            transition: 'transform 1s',
+            transition: 'transform .5s',
             transformStyle: 'preserve-3d',
-            animationDuration: '2s',
-            animationName: 'flipCard'
         };
 
         let frontStyle = {
@@ -40,10 +39,17 @@ export default class Card extends Component {
         };
 
         return <div className="card-container" style={containerStyle}>
-            <div className="card" style={cardStyle}>
-                <div  className="back" style={backStyle}></div>
-                <div className="front" style={frontStyle}></div>
-            </div>
+            <ReactCSSTransitionGroup  key={this.props.id}
+                                      transitionName="flip"
+                                      transitionAppear={true}
+                                      transitionAppearTimeout={500}
+                                      transitionEnterTimeout={500}
+                                      transitionLeaveTimeout={300}>
+                <div key={this.props.id} className="card" style={cardStyle}>
+                    <div  className="back" style={backStyle}></div>
+                    <div className="front" style={frontStyle}></div>
+                </div>
+            </ReactCSSTransitionGroup>
         </div>;
     }
 }
