@@ -14,7 +14,7 @@ let store = createStore(reducer, setInitialState());
 
 ReactDOM.render(
     <Provider store={store}>
-        <Blackjack cards={cards} />
+        <Blackjack />
     </Provider>,
     document.getElementById('blackjack')
 );
