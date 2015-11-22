@@ -20,8 +20,12 @@ export function setDeck(deck) {
 }
 
 export function deal() {
-    return {
-        type: 'DEAL'
+    // Deal four cards
+    return (dispatch) => {
+        dealNextCard(dispatch)
+            .then(() => dealNextCard(dispatch))
+            .then(() => dealNextCard(dispatch))
+            .then(() => dealNextCard(dispatch))
     };
 }
 export function dealCard() {
@@ -58,4 +62,14 @@ export function resetDeck() {
     return {
         type: 'RESET_DECK'
     };
+}
+
+function dealNextCard(dispatch) {
+    let promise = new Promise((resolve) => {
+        setTimeout(() => {
+            dispatch({type:'DEAL_CARD'})
+            resolve();
+        }, 500)
+    })
+    return promise
 }
