@@ -21,13 +21,23 @@ export default class Blackjack extends Component {
         }
     }
 
+    getButtonAction(buttonKey) {
+        switch (buttonKey) {
+            case 'deal':
+                return this.props.deal;
+            default:
+                return this.props.dea;
+        }
+    }
+
     render() {
         return <div>
             <ReactCSSTransitionGroup transitionName="fade"
                     transitionEnterTimeout={500}
                     transitionLeaveTimeout={300}>
-                {this.getUsableButtons().map((text) => {
-                    return <Button key={text} text={text}/>
+                {this.getUsableButtons().map((key) => {
+                    return <Button key={key} text={key}
+                                handleClick={this.getButtonAction(key)}/>
                 })}
             </ReactCSSTransitionGroup>
             {this.getCards().map(card =>
