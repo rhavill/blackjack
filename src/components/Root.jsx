@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux'
 
-import Blackjack from './Blackjack';
+import Table from './Table';
 import * as actionCreators from '../action_creators';
 
 class Root extends Component {
     render() {
         return <div>
-            <Blackjack {...this.props} />
+            <Table {...this.props} />
         </div>;
     }
 }

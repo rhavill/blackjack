@@ -4,7 +4,7 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import Card from './Card';
 import Buttons from './Buttons';
 
-export default class Blackjack extends Component {
+export default class Table extends Component {
 
     getCards() {
         return this.props.cards;
@@ -28,7 +28,7 @@ export default class Blackjack extends Component {
     }
 }
 
-Blackjack.defaultProps = {
+Table.defaultProps = {
     cards: []
 };
 

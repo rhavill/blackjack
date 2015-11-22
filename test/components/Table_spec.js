@@ -6,15 +6,15 @@ import {
     findRenderedComponentWithType,
 }  from 'react-addons-test-utils';
 
-import Blackjack from '../../src/components/Blackjack';
+import Table from '../../src/components/Table';
 import Buttons from '../../src/components/Buttons';
 
-describe('Blackjack', () => {
+describe('Table', () => {
 
     it('has one Buttons component', () => {
         let deal = () => {};
         let component = renderIntoDocument(
-            <Blackjack turn="dealer" deal={deal} />
+            <Table turn="dealer" deal={deal} />
         );
         let buttons = findRenderedComponentWithType(component, Buttons);
         expect(buttons.props.turn).to.equal('dealer');
