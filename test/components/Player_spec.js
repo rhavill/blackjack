@@ -16,7 +16,6 @@ describe('Player', () => {
             <Player isDealer={true} />
         );
         let hand = findRenderedComponentWithType(component, Hand);
-        expect(hand.props.carss).to.equal();
     });
 
 })
