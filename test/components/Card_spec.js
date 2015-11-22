@@ -1,12 +1,13 @@
 import React from 'react';
 import {findDOMNode} from 'react-dom';
-import Card from '../../src/components/Card';
 import {expect} from 'chai';
-import cards from '../../src/data/cards';
 import {
     renderIntoDocument,
     scryRenderedDOMComponentsWithTag
 } from 'react-addons-test-utils';
+
+import Card from '../../src/components/Card';
+import cards from '../../src/data/cards';
 
 describe('Card', () => {
 

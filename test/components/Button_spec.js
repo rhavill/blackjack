@@ -1,9 +1,9 @@
 import React from 'react';
-import {findDOMNode} from 'react-dom';
-import Button from '../../src/components/Button';
 import {expect} from 'chai';
 import {renderIntoDocument, scryRenderedDOMComponentsWithTag, Simulate}
     from 'react-addons-test-utils';
+
+import Button from '../../src/components/Button';
 
 describe('Button', () => {
 
