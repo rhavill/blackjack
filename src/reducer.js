@@ -18,11 +18,13 @@ function deck(state, action) {
     }
 }
 
-function player(state, action, cardIndex) {
+function player(state, action) {
     switch (action.type) {
         case 'DEAL_CARD':
-            if (cardIndex % 2 == 0) {
-                return state.push(cardIndex);
+            if (action.cardIndex % 2 == 0) {
+                let nextState = state.push(action.cardIndex);
+                console.log(nextState);
+                return nextState;
             }
         default:
             return state;
@@ -45,7 +47,7 @@ export default function(state, action) {
             return Map({
                 deck: deck(state.get('deck'), action),
                 turn: turn(state.get('turn'), action),
-                player: player(state.get('player'), action, state.get('nextCardIndex')),
+                player: player(state.get('player'), action),
                 nextCardIndex: nextCardIndex(state.get('nextCardIndex'), action)
             });
     }
