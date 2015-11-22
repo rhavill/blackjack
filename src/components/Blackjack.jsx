@@ -17,7 +17,7 @@ export default class Blackjack extends Component {
             case 'player':
                 return ['hit', 'stay'];
             default:
-                return ['hit', 'deal', 'stay'];
+                return [];
         }
     }
 
