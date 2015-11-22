@@ -7,11 +7,12 @@ export default class Player extends Component {
 
     render() {
         return <div>
-            <Hand />
+            <Hand cards={this.props.cards} />
         </div>
     }
 }
 
 Player.defaultProps = {
-    isDealer: false
+    isDealer: false,
+    cards: []
 }
