@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import Table from './Table';
 import * as actionCreators from '../action_creators';
 
-class Root extends Component {
+class Blackjack extends Component {
     render() {
         return <div>
             <Table {...this.props} />
@@ -19,4 +19,4 @@ function stateToProps(state) {
     }
 }
 
-export default connect(stateToProps, actionCreators)(Root);
+export default connect(stateToProps, actionCreators)(Blackjack);
