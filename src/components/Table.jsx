@@ -8,7 +8,7 @@ import Player from './Player';
 export default class Table extends Component {
 
     getCards() {
-        return this.props.cards;
+        return this.props.deck;
     }
 
     render() {
@@ -32,6 +32,6 @@ export default class Table extends Component {
 }
 
 Table.defaultProps = {
-    cards: []
+    deck: []
 };
 
