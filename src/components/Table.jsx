@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
-import Card from './Card';
 import Buttons from './Buttons';
 import Player from './Player';
+import Deck from './Deck';
 
 export default class Table extends Component {
 
@@ -17,16 +16,7 @@ export default class Table extends Component {
             <Player ref="player" isDealer={false} />
             <Buttons turn={this.props.turn} deal={this.props.deal}/>
             <div style={{clear: 'both', marginTop: 20}} />
-            {this.getCards().map(card =>
-                <ReactCSSTransitionGroup   key={card.id}
-                          transitionName="fadein"
-                          transitionAppear={true}
-                          transitionAppearTimeout={500}
-                          transitionEnter={false}
-                          transitionLeave={false}>
-                    <Card key={card.id} {...card} />
-                </ReactCSSTransitionGroup>
-            )}
+            <Deck deck={this.props.deck} />
         </div>;
     }
 }
