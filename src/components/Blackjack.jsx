@@ -1,17 +1,16 @@
 import React, {Component} from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import {connect} from 'react-redux'
 
 import Card from './Card';
 import Button from './Button';
 
-class Blackjack extends Component {
+export default class Blackjack extends Component {
 
     getCards() {
         return this.props.cards;
     }
 
-    showButtons() {
+    getUsableButtons() {
         switch (this.props.turn) {
             case null:
                 return ['deal'];
@@ -27,7 +26,7 @@ class Blackjack extends Component {
             <ReactCSSTransitionGroup transitionName="fade"
                     transitionEnterTimeout={500}
                     transitionLeaveTimeout={300}>
-                {this.showButtons().map((text) => {
+                {this.getUsableButtons().map((text) => {
                     return <Button key={text} text={text}/>
                 })}
             </ReactCSSTransitionGroup>
@@ -45,15 +44,7 @@ class Blackjack extends Component {
     }
 }
 
-function select(state) {
-    return {
-        turn: state.get('turn'),
-        cards: state.get('deck')
-    }
-}
-
 Blackjack.defaultProps = {
     cards: []
 };
 
-export default connect(select)(Blackjack)
