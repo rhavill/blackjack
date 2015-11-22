@@ -12,7 +12,16 @@ export default class Hand extends Component {
             justifyContent: 'center'
         };
         return <div style={style}>
-            <h1>hand</h1>
+            {this.props.cards.map(card =>
+                    <ReactCSSTransitionGroup   key={card.id}
+                                               transitionName="fadein"
+                                               transitionAppear={true}
+                                               transitionAppearTimeout={500}
+                                               transitionEnter={false}
+                                               transitionLeave={false}>
+                        <Card key={card.id} {...card} />
+                    </ReactCSSTransitionGroup>
+            )}
         </div>
     }
 
