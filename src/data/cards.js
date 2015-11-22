@@ -12,7 +12,8 @@ suits.map(function(suit, suitIndex) {
             rank: rank,
             suit: suit,
             points: points,
-            backgroundPosition: backgroundX + 'px ' + backgroundY + 'px'
+            backgroundPosition: backgroundX + 'px ' + backgroundY + 'px',
+            isFaceUp: false
         });
     });
 });
