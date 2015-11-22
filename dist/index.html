@@ -9,7 +9,7 @@
             background: linear-gradient(to right, darkgreen, green);
         }
 
-        /* Card animations */
+        /* Animations */
         .flip-appear {
             transform: rotateY( 180deg );
         }
@@ -20,10 +20,28 @@
             opacity: 1;
             transition: opacity 1s ease-in;
         }
+        .fade-enter {
+            opacity: 0.01;
+        }
+
+        .fade-enter.fade-enter-active {
+            opacity: 1;
+            transition: opacity 500ms ease-in;
+        }
+
+        .fade-leave {
+            opacity: 1;
+        }
+
+        .fade-leave.fade-leave-active {
+            opacity: 0.01;
+            transition: opacity 300ms ease-in;
+        }
 
         /* Buttons */
         .button {
             font-family: Impact;
+            text-transform: uppercase;
             height: 40px;
             width: 60px;
             cursor: pointer;
