@@ -58,3 +58,7 @@ export default class Card extends Component {
         </div>;
     }
 }
+
+Card.defaultProps = {
+    isFaceUp: true
+};
