@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 export default class Button extends Component {
     render() {
