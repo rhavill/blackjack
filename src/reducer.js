@@ -23,7 +23,6 @@ function player(state, action) {
         case 'DEAL_CARD':
             if (action.cardIndex % 2 == 0) {
                 let nextState = state.push(action.cardIndex);
-                console.log(nextState);
                 return nextState;
             }
         default:
