@@ -21,7 +21,12 @@ export default class Buttons extends Component {
     }
 
     render() {
-        return <div>
+        const style = {
+            display:'flex',
+            flexWrap:'wrap',
+            justifyContent: 'center'
+        };
+        return <div style={style}>
             <ReactCSSTransitionGroup transitionName="fade"
                                      transitionEnterTimeout={500}
                                      transitionLeaveTimeout={300}>

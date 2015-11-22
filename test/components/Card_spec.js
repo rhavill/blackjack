@@ -32,14 +32,6 @@ describe('Card', () => {
         expect(findDOMNode(divs[3]).style.getPropertyValue('background-position')).to.equal('0px -123px');
     });
 
-    it('floats left', () => {
-        const component = renderIntoDocument(
-            <Card {...aceOfDiamonds} />
-        );
-        const divs = scryRenderedDOMComponentsWithTag(component, 'div');
-        expect(findDOMNode(divs[0]).style.getPropertyValue('float')).to.equal('left');
-    });
-
     it('renders correct background image position', () => {
         aceOfDiamonds.isFaceUp = true;
         const ace = renderIntoDocument(
