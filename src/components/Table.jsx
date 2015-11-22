@@ -3,6 +3,7 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import Card from './Card';
 import Buttons from './Buttons';
+import Player from './Player';
 
 export default class Table extends Component {
 
@@ -12,6 +13,8 @@ export default class Table extends Component {
 
     render() {
         return <div>
+            <Player ref="dealer" isDealer={true} />
+            <Player ref="player" isDealer={false} />
             <Buttons turn={this.props.turn} deal={this.props.deal}/>
             <div style={{clear: 'both', marginTop: 20}} />
             {this.getCards().map(card =>
