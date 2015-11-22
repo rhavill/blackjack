@@ -25,7 +25,7 @@ function deck(state, action) {
 
 function player(state, action, cardIndex) {
     switch (action.type) {
-        case 'DEAL':
+        case 'DEAL_CARD':
             if (cardIndex % 2 == 0) {
                 return state.push(cardIndex);
             }
@@ -36,7 +36,7 @@ function player(state, action, cardIndex) {
 
 function nextCardIndex(state, action) {
     switch (action.type) {
-        case 'DEAL':
+        case 'DEAL_CARD':
             return state + 1;
         default:
             return state;

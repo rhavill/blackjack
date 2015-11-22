@@ -92,10 +92,10 @@ describe('reducer', () => {
         expect(nextState.get('deck')).to.equal(fromJS(jsDeck));
     });
 
-    it('handles DEAL', () => {
+    it('handles DEAL_CARD', () => {
         const initialState = setInitialState();
         const action = {
-            type: 'DEAL'
+            type: 'DEAL_CARD'
         };
         const nextState = reducer(initialState, action);
         expect(nextState.get('nextCardIndex')).to.equal(1);

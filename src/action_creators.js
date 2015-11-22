@@ -24,6 +24,11 @@ export function deal() {
         type: 'DEAL'
     };
 }
+export function dealCard() {
+    return {
+        type: 'DEAL_CARD'
+    };
+}
 
 export function hit() {
     return {
