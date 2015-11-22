@@ -1,9 +1,4 @@
 import {Map} from 'immutable';
-import setInitialState from './data/state';
-
-function setState(state, action) {
-    return state.merge(action.state);
-}
 
 function turn(state, action) {
     switch (action.type) {
@@ -46,10 +41,6 @@ function nextCardIndex(state, action) {
 export default function(state, action) {
     state = state || Map();
     switch (action.type) {
-        case 'SET_INITIAL_STATE':
-            return setInitialState(state, action);
-        case 'SET_STATE':
-            return setState(state, action);
         default:
             return Map({
                 deck: deck(state.get('deck'), action),

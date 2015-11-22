@@ -30,48 +30,6 @@ let immutableState = Map({
 
 describe('reducer', () => {
 
-    it('handles SET_INITIAL_STATE', () => {
-        const initialState = Map();
-        const action = {
-            type: 'SET_INITIAL_STATE',
-            state: immutableState
-        };
-        const nextState = reducer(initialState, action);
-        expect(nextState.get('nextCardIndex')).to.equal(0);
-        expect(nextState.get('turn')).to.equal(null);
-        expect(nextState.get('deck').size).to.equal(52);
-        expect(nextState.get('player').size).to.equal(0);
-    });
-
-    it('handles SET_STATE', () => {
-        const initialState = Map();
-        const action = {
-            type: 'SET_STATE',
-            state: immutableState
-        };
-        const nextState = reducer(initialState, action);
-        expect(nextState).to.equal(fromJS(jsState));
-    });
-
-    it('handles SET_STATE with plain JS payload', () => {
-        const initialState = Map();
-        const action = {
-            type: 'SET_STATE',
-            state: jsState
-        };
-        const nextState = reducer(initialState, action);
-        expect(nextState).to.equal(fromJS(jsState));
-    });
-
-    it('handles SET_STATE without initial state', () => {
-        const action = {
-            type: 'SET_STATE',
-            state: jsState
-        };
-        const nextState = reducer(undefined, action);
-        expect(nextState).to.equal(fromJS(jsState));
-    });
-
     it('handles SET_TURN', () => {
         const initialState = Map();
         const action = {
