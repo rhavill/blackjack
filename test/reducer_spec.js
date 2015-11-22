@@ -53,7 +53,8 @@ describe('reducer', () => {
     it('handles DEAL_CARD', () => {
         const initialState = setInitialState();
         const action = {
-            type: 'DEAL_CARD'
+            type: 'DEAL_CARD',
+            cardIndex: 0
         };
         const nextState = reducer(initialState, action);
         expect(nextState.get('nextCardIndex')).to.equal(1);

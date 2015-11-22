@@ -56,7 +56,7 @@ export function dealerTurn() {
 export function resetDeck() {
     return {
         type: 'RESET_DECK'
-    };  
+    };
 }
 
 function dealNextCard(dispatch, getState) {
