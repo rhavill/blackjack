@@ -6,7 +6,7 @@ import Hand from './Hand';
 export default class Player extends Component {
 
     render() {
-        return <div>
+        return <div style={{minHeight: 130}}>
             <Hand cards={this.props.cards} />
         </div>
     }
