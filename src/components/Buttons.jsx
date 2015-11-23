@@ -26,8 +26,8 @@ export default class Buttons extends Component {
             flexWrap:'wrap',
             justifyContent: 'center'
         };
-        return <div style={style}>
-            <ReactCSSTransitionGroup transitionName="fade"
+        return <div>
+            <ReactCSSTransitionGroup style={style} transitionName="fade"
                                      transitionEnterTimeout={500}
                                      transitionLeaveTimeout={300}>
                 {this.getUsableButtons().map((key) => {
