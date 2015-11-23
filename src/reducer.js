@@ -13,6 +13,15 @@ function deck(state, action) {
     switch (action.type) {
         case 'SET_DECK':
             return action.deck;
+        case 'DEAL_CARD':
+            if (action.cardIndex == 3) {
+                let newCard = Object.assign(
+                    {}, state.get(3), {isFaceUp: false}
+                )
+                let nextState = state.set(3, newCard)
+                return nextState;
+
+            }
         default:
             return state;
     }

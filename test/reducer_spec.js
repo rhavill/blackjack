@@ -70,7 +70,7 @@ describe('reducer', () => {
         nextState = reducer(nextState, action)
         action.cardIndex = nextState.get('nextCardIndex')
         expect(action.cardIndex).to.equal(4)
-        //expect(nextState.get('deck').get(3).isFaceUp).to.equal(false);
+        expect(nextState.get('deck').get(3).isFaceUp).to.equal(false);
 
         expect(nextState.get('nextCardIndex')).to.equal(4);
     });
