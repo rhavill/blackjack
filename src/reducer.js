@@ -18,6 +18,18 @@ function deck(state, action) {
     }
 }
 
+function dealer(state, action) {
+    switch (action.type) {
+        case 'DEAL_CARD':
+            if (action.cardIndex % 2 == 1) {
+                let nextState = state.push(action.cardIndex);
+                return nextState;
+            }
+        default:
+            return state;
+    }
+}
+
 function player(state, action) {
     switch (action.type) {
         case 'DEAL_CARD':
@@ -46,6 +58,7 @@ export default function(state, action) {
             return Map({
                 deck: deck(state.get('deck'), action),
                 turn: turn(state.get('turn'), action),
+                dealer: dealer(state.get('dealer'), action),
                 player: player(state.get('player'), action),
                 nextCardIndex: nextCardIndex(state.get('nextCardIndex'), action)
             });

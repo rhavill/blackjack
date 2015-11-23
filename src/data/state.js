@@ -6,6 +6,7 @@ export default function setInitialState() {
         nextCardIndex: 0,
         deck: List(cards),
         turn: null,
-        player: List([]),
+        dealer: List([]),
+        player: List([])
     });
 }
