@@ -4,7 +4,6 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 export default class Card extends Component {
     render() {
         let containerStyle = {
-            float: 'left',
             perspective: '800px',
             height: '123px',
             width: '79px',
