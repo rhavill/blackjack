@@ -52,13 +52,27 @@ describe('reducer', () => {
 
     it('handles DEAL_CARD', () => {
         const initialState = setInitialState();
-        const action = {
+        let action = {
             type: 'DEAL_CARD',
             cardIndex: 0
         };
-        const nextState = reducer(initialState, action);
+        let nextState = reducer(initialState, action);
+        action.cardIndex = nextState.get('nextCardIndex')
         expect(nextState.get('nextCardIndex')).to.equal(1);
         expect(nextState.get('player')).to.equal(fromJS([0]));
+        expect(nextState.get('dealer')).to.equal(fromJS([]));
+
+        // The fourth card dealt should be face down
+        nextState = reducer(nextState, action)
+        action.cardIndex = nextState.get('nextCardIndex')
+        nextState = reducer(nextState, action)
+        action.cardIndex = nextState.get('nextCardIndex')
+        nextState = reducer(nextState, action)
+        action.cardIndex = nextState.get('nextCardIndex')
+        expect(action.cardIndex).to.equal(4)
+        //expect(nextState.get('deck').get(3).isFaceUp).to.equal(false);
+
+        expect(nextState.get('nextCardIndex')).to.equal(4);
     });
 
 });
