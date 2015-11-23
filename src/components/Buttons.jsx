@@ -29,7 +29,7 @@ export default class Buttons extends Component {
         return <div>
             <ReactCSSTransitionGroup style={style} transitionName="fade"
                                      transitionEnterTimeout={500}
-                                     transitionLeaveTimeout={300}>
+                                     transitionLeave={false}>
                 {this.getUsableButtons().map((key) => {
                     return <Button key={key} text={key}
                                    handleClick={this.getButtonAction(key)}/>
