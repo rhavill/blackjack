@@ -69,7 +69,7 @@ function dealNextCard(dispatch, getState) {
                 cardIndex
             })
             resolve();
-        }, 500)
+        }, 1000)
     })
     return promise
 }
