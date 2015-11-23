@@ -16,6 +16,7 @@ export function setDeck(deck) {
 export function deal() {
     // Deal four cards
     return (dispatch, getState) => {
+        dispatch({type:'SET_TURN', turn:'player'})
         dealNextCard(dispatch, getState)
             .then(() => dealNextCard(dispatch, getState))
             .then(() => dealNextCard(dispatch, getState))
