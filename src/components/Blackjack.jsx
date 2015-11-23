@@ -15,7 +15,9 @@ class Blackjack extends Component {
 function stateToProps(state) {
     return {
         turn: state.get('turn'),
-        deck: state.get('deck')
+        deck: state.get('deck'),
+        dealer: state.get('dealer'),
+        player: state.get('player')
     }
 }
 

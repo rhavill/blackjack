@@ -7,13 +7,20 @@ import Deck from './Deck';
 export default class Table extends Component {
 
     getCards() {
-        return this.props.deck;
+        return {
+            dealer: this.props.dealer.map((cardIndex) => {
+                return this.props.deck.get(cardIndex)
+            }),
+            player: this.props.player.map((cardIndex) => {
+                return this.props.deck.get(cardIndex)
+            })
+        }
     }
 
     render() {
         return <div>
-            <Player ref="dealer" isDealer={true} />
-            <Player ref="player" isDealer={false} />
+            <Player ref="dealer" isDealer={true} cards={this.getCards().dealer} />
+            <Player ref="player" isDealer={false} cards={this.getCards().player} />
             <Buttons turn={this.props.turn} deal={this.props.deal}/>
             <div style={{clear: 'both', marginTop: 20}} />
             <Deck deck={this.props.deck} />
@@ -22,6 +29,8 @@ export default class Table extends Component {
 }
 
 Table.defaultProps = {
-    deck: []
+    deck: [],
+    player: [],
+    dealer: []
 };
 
