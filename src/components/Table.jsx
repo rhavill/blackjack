@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-
+import {List, Map} from 'immutable'
 import Buttons from './Buttons';
 import Player from './Player';
 import Deck from './Deck';
@@ -8,10 +8,10 @@ export default class Table extends Component {
 
     getCards() {
         return {
-            dealer: this.props.dealer.map((cardIndex) => {
+            dealer: this.props.dealer.get('cards').map((cardIndex) => {
                 return this.props.deck.get(cardIndex)
             }),
-            player: this.props.player.map((cardIndex) => {
+            player: this.props.player.get('cards').map((cardIndex) => {
                 return this.props.deck.get(cardIndex)
             })
         }
@@ -29,8 +29,15 @@ export default class Table extends Component {
 }
 
 Table.defaultProps = {
-    deck: [],
-    player: [],
-    dealer: []
+    deck: List([]),
+    player: Map({
+        cards: List([]),
+        scores: List([])
+    }),
+    dealer: Map({
+        cards: List([]),
+        scores: List([])
+    }),
+    turn: null
 };
 

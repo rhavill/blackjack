@@ -4,6 +4,7 @@ import {
     renderIntoDocument,
     scryRenderedComponentsWithType
 }  from 'react-addons-test-utils';
+import {List} from 'immutable'
 
 import Card from '../../src/components/Card';
 import Hand from '../../src/components/Hand'
@@ -11,8 +12,8 @@ import cards from '../../src/data/cards';
 
 describe('Hand', () => {
 
-    let sixOfSpaces = cards[44];
-    let jackOfClubs = cards[10];
+    let sixOfSpaces = cards.get(44);
+    let jackOfClubs = cards.get(10);
 
     it('has no Cards by default', () => {
         let component = renderIntoDocument(
@@ -24,7 +25,7 @@ describe('Hand', () => {
 
     it('renders Card components from props.cards', () => {
         let component = renderIntoDocument(
-            <Hand cards={[sixOfSpaces, jackOfClubs]} />
+            <Hand cards={List([sixOfSpaces, jackOfClubs])} />
         );
         let cards = scryRenderedComponentsWithType(component, Card);
         expect(cards.length).to.equal(2);

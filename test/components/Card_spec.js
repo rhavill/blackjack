@@ -11,13 +11,13 @@ import cards from '../../src/data/cards';
 
 describe('Card', () => {
 
-    let aceOfDiamonds = cards[13];
-    let fourOfHearts = cards[29];
-    let jackOfClubs = cards[10];
+    let aceOfDiamonds = cards.get(13);
+    let fourOfHearts = cards.get(29);
+    let jackOfClubs = cards.get(10);
 
     it('renders some divs', () => {
         const component = renderIntoDocument(
-            <Card {...aceOfDiamonds} />
+            <Card card={aceOfDiamonds} />
         );
         const divs = scryRenderedDOMComponentsWithTag(component, 'div');
         let classes = [];
@@ -34,23 +34,23 @@ describe('Card', () => {
     });
 
     it('renders correct background image position', () => {
-        aceOfDiamonds.isFaceUp = true;
+        let aceOfDiamondsUp = aceOfDiamonds.set('isFaceUp', true)
         const ace = renderIntoDocument(
-            <Card {...aceOfDiamonds} />
+            <Card card={aceOfDiamondsUp} />
         );
         let divs = scryRenderedDOMComponentsWithTag(ace, 'div');
         expect(findDOMNode(divs[3]).style.getPropertyValue('background-position')).to.equal('0px -123px');
 
         fourOfHearts.isFaceUp = true;
         const four = renderIntoDocument(
-            <Card {...fourOfHearts} />
+            <Card card={fourOfHearts} />
         );
         divs = scryRenderedDOMComponentsWithTag(four, 'div');
         expect(findDOMNode(divs[3]).style.getPropertyValue('background-position')).to.equal('-237px -246px');
 
         jackOfClubs.isFaceUp = true;
         const jack = renderIntoDocument(
-            <Card {...jackOfClubs} />
+            <Card card={jackOfClubs} />
         );
         divs = scryRenderedDOMComponentsWithTag(jack, 'div');
         expect(findDOMNode(divs[3]).style.getPropertyValue('background-position')).to.equal('-790px 0px');

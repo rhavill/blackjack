@@ -1,8 +1,12 @@
 import React, {Component} from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import {Map} from 'immutable'
 
 export default class Card extends Component {
     render() {
+        let backgroundPosition = this.props.card.get('backgroundPosition');
+        let isFaceUp = this.props.card.get('isFaceUp');
+        let id =  this.props.card.get('id');
         let containerStyle = {
             perspective: '800px',
             height: '123px',
@@ -17,7 +21,7 @@ export default class Card extends Component {
         };
 
         let frontStyle = {
-            backgroundPosition: this.props.backgroundPosition,
+            backgroundPosition: backgroundPosition,
             backgroundImage: 'url("cards.png")',
             height: '100%',
             width: '100%',
@@ -36,20 +40,20 @@ export default class Card extends Component {
             backfaceVisibility: 'hidden',
         };
 
-        if (this.props.isFaceUp) {
+        if (isFaceUp) {
             backStyle.transform = 'rotateY( 180deg )';
         }
         else {
             frontStyle.transform = 'rotateY( 180deg )';
         }
         return <div className="card-container" style={containerStyle}>
-            <ReactCSSTransitionGroup  key={this.props.id}
+            <ReactCSSTransitionGroup  key={id}
                                       transitionName="flip"
-                                      transitionAppear={this.props.isFaceUp}
+                                      transitionAppear={isFaceUp}
                                       transitionAppearTimeout={500}
                                       transitionEnter={false}
                                       transitionLeave={false}  >
-                <div key={this.props.id} className="card" style={cardStyle}>
+                <div key={id} className="card" style={cardStyle}>
                     <div  className="back" style={backStyle}></div>
                     <div className="front" style={frontStyle}></div>
                 </div>
@@ -59,5 +63,5 @@ export default class Card extends Component {
 }
 
 Card.defaultProps = {
-    isFaceUp: true
+    card: Map({isFaceUp: true})
 };

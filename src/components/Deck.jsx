@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import {List} from 'immutable'
 
 import Card from './Card';
 
@@ -12,13 +13,13 @@ export default class Table extends Component {
     render() {
         return <div>
              {this.getCards().map(card =>
-                <ReactCSSTransitionGroup   key={card.id}
+                <ReactCSSTransitionGroup   key={card.get('id')}
                           transitionName="fadein"
                           transitionAppear={true}
                           transitionAppearTimeout={500}
                           transitionEnter={false}
                           transitionLeave={false}>
-                    <Card key={card.id} {...card} />
+                    <Card key={card.get('id')} card={card} />
                 </ReactCSSTransitionGroup>
             )}
         </div>;
@@ -26,6 +27,6 @@ export default class Table extends Component {
 }
 
 Table.defaultProps = {
-    deck: []
+    deck: List([])
 };
 
