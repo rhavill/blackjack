@@ -1,4 +1,4 @@
-import {List, Map, fromJS} from 'immutable';
+import {List, Map, fromJS, toJS} from 'immutable';
 import {expect} from 'chai';
 import reducer from '../src/reducer';
 import cards from '../src/data/cards';
@@ -59,8 +59,8 @@ describe('reducer', () => {
         let nextState = reducer(initialState, action);
         action.cardIndex = nextState.get('nextCardIndex')
         expect(nextState.get('nextCardIndex')).to.equal(1);
-        expect(nextState.get('player')).to.equal(fromJS([0]));
-        expect(nextState.get('dealer')).to.equal(fromJS([]));
+        expect(nextState.getIn(['player', 'cards'])).to.equal(fromJS([0]));
+        expect(nextState.getIn(['dealer', 'cards'])).to.equal(fromJS([]));
 
         // The fourth card dealt should be face down
         nextState = reducer(nextState, action)
@@ -72,7 +72,6 @@ describe('reducer', () => {
         expect(action.cardIndex).to.equal(4)
         expect(nextState.get('deck').get(3).isFaceUp).to.equal(false);
 
-        expect(nextState.get('nextCardIndex')).to.equal(4);
     });
 
 });

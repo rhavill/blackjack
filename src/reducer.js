@@ -31,7 +31,9 @@ function dealer(state, action) {
     switch (action.type) {
         case 'DEAL_CARD':
             if (action.cardIndex % 2 == 1) {
-                let nextState = state.push(action.cardIndex);
+                let nextState = state.set('cards',
+                    state.get('cards').push(action.cardIndex)
+                );
                 return nextState;
             }
         default:
@@ -43,7 +45,10 @@ function player(state, action) {
     switch (action.type) {
         case 'DEAL_CARD':
             if (action.cardIndex % 2 == 0) {
-                let nextState = state.push(action.cardIndex);
+                let nextState = state.set('cards',
+                    state.get('cards').push(action.cardIndex)
+                );
+                //console.log('next',nextState)
                 return nextState;
             }
         default:
