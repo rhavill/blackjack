@@ -15,10 +15,7 @@ function deck(state, action) {
             return action.deck;
         case 'DEAL_CARD':
             if (action.cardIndex == 3) {
-                let newCard = Object.assign(
-                    {}, state.get(3), {isFaceUp: false}
-                )
-                let nextState = state.set(3, newCard)
+                let nextState = state.setIn([3, 'isFaceUp'], false)
                 return nextState;
 
             }
