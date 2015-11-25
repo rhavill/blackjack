@@ -16,7 +16,6 @@ export default class Table extends Component {
                 return this.props.deck.get(cardIndex)
             })
         }
-        //console.log('getcards',this.props.player)
         return cards
     }
 
