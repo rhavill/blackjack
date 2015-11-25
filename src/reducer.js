@@ -27,10 +27,8 @@ function deck(state, action) {
 function dealer(state, action) {
     switch (action.type) {
         case 'DEAL_CARD':
-            if (action.cardIndex % 2 == 1) {
-                let nextState = state.set('cards',
-                    state.get('cards').push(action.cardIndex)
-                );
+            if (action.cardIndex % 2 == 1 && action.cardIndex < 4) {
+                let nextState = state.push(action.cardIndex)
                 return nextState;
             }
         default:
@@ -41,11 +39,8 @@ function dealer(state, action) {
 function player(state, action) {
     switch (action.type) {
         case 'DEAL_CARD':
-            if (action.cardIndex % 2 == 0) {
-                let nextState = state.set('cards',
-                    state.get('cards').push(action.cardIndex)
-                );
-                //console.log('next',nextState)
+            if (action.cardIndex % 2 == 0 && action.cardIndex < 3) {
+                let nextState = state.push(action.cardIndex)
                 return nextState;
             }
         default:

@@ -59,8 +59,8 @@ describe('reducer', () => {
         let nextState = reducer(initialState, action);
         action.cardIndex = nextState.get('nextCardIndex')
         expect(nextState.get('nextCardIndex')).to.equal(1);
-        expect(nextState.getIn(['player', 'cards'])).to.equal(fromJS([0]));
-        expect(nextState.getIn(['dealer', 'cards'])).to.equal(fromJS([]));
+        expect(nextState.get('player')).to.equal(fromJS([0]));
+        expect(nextState.get('dealer')).to.equal(fromJS([]));
 
         // The fourth card dealt should be face down
         nextState = reducer(nextState, action)

@@ -6,13 +6,11 @@ export default function setInitialState() {
         nextCardIndex: 0,
         deck: List(cards),
         turn: null,
-        dealer: Map({
-            cards: List([]),
-            scores: List([])
-        }),
-        player: Map({
-            cards: List([]),
-            scores: List([])
+        dealer: List([]),
+        player: List([]),
+        scores: Map({
+            dealer: List([]),
+            player: List([])
         })
     });
 }

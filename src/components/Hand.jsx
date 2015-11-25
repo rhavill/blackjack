@@ -12,6 +12,8 @@ export default class Hand extends Component {
             flexWrap:'wrap',
             justifyContent: 'center'
         };
+
+        //console.log('hand', this.props.cards)
         return <div style={style}>
             {this.props.cards.map(card =>
                     <ReactCSSTransitionGroup   key={card.get('id')}

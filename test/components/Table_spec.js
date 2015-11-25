@@ -5,6 +5,7 @@ import {
     findRenderedComponentWithType,
     scryRenderedComponentsWithType
 }  from 'react-addons-test-utils';
+import {List, Map} from 'immutable'
 
 import Table from '../../src/components/Table';
 import Buttons from '../../src/components/Buttons';
