@@ -24,7 +24,6 @@ export default class Table extends Component {
             <Player ref="dealer" isDealer={true} cards={this.getCards().dealer} />
             <Player ref="player" isDealer={false} cards={this.getCards().player} />
             <Buttons turn={this.props.turn} deal={this.props.deal}/>
-            <div style={{clear: 'both', marginTop: 20}} />
             <Deck deck={this.props.deck} />
         </div>;
     }
