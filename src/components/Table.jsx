@@ -19,6 +19,27 @@ export default class Table extends Component {
         return cards
     }
 
+    getScores(cardIndexes) {
+        let aceCount = 0, minScore = 0;
+        const deck = this.props.deck
+        cardIndexes.map((index) => {
+            let card = deck.get(index)
+            if (card.get('rank') == 'A') {
+                aceCount++
+            }
+            minScore += card.get('points')
+        })
+        let scores = [minScore]
+        if (aceCount) {
+            scores.push(minScore + 10)
+            if (aceCount == 3 && cards.size == 3) {
+                scores.push(21)
+            }
+
+        }
+        return List(scores);
+    }
+
     render() {
         return <div>
             <Player ref="dealer" isDealer={true} cards={this.getCards().dealer} />

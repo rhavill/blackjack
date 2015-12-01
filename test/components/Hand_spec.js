@@ -12,7 +12,7 @@ import cards from '../../src/data/cards';
 
 describe('Hand', () => {
 
-    let sixOfSpaces = cards.get(44);
+    let sixOfSpades = cards.get(44);
     let jackOfClubs = cards.get(10);
 
     it('has no Cards by default', () => {
@@ -25,7 +25,7 @@ describe('Hand', () => {
 
     it('renders Card components from props.cards', () => {
         let component = renderIntoDocument(
-            <Hand cards={List([sixOfSpaces, jackOfClubs])} />
+            <Hand cards={List([sixOfSpades, jackOfClubs])} />
         );
         let cards = scryRenderedComponentsWithType(component, Card);
         expect(cards.length).to.equal(2);

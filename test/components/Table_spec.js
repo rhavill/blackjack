@@ -5,11 +5,12 @@ import {
     findRenderedComponentWithType,
     scryRenderedComponentsWithType
 }  from 'react-addons-test-utils';
-import {List, Map} from 'immutable'
+import {List, fromJS} from 'immutable'
 
 import Table from '../../src/components/Table';
 import Buttons from '../../src/components/Buttons';
 import Player from '../../src/components/Player'
+import cards from '../../src/data/cards';
 
 describe('Table', () => {
 
@@ -32,5 +33,15 @@ describe('Table', () => {
         expect(component.refs.dealer.props.isDealer).to.equal(true);
         expect(component.refs.player.props.isDealer).to.equal(false);
     });
+
+    it('has scores', () => {
+        let aceOfClubs = 0;
+        let sixOfSpades = 44;
+        let player = List([aceOfClubs, sixOfSpades])
+        let component = renderIntoDocument(
+            <Table turn="player" player={player} deck={cards} />
+        );
+        expect(component.getScores(player)).to.equal(fromJS([7, 17]))
+    })
 
 })
