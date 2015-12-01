@@ -1,8 +1,10 @@
 import React from 'react';
+import {List} from 'immutable'
 import {expect} from 'chai';
 import {
     renderIntoDocument,
-    findRenderedComponentWithType
+    findRenderedComponentWithType,
+    scryRenderedComponentsWithType
 }  from 'react-addons-test-utils';
 
 import Player from '../../src/components/Player';
@@ -18,11 +20,19 @@ describe('Player', () => {
         let hand = findRenderedComponentWithType(component, Hand);
     });
 
-    it('has one Scores component', () => {
+    it('has one Scores component with scores', () => {
         let component = renderIntoDocument(
             <Player isDealer={true} />
         );
-        let scores = findRenderedComponentWithType(component, Scores);
+        let scores = scryRenderedComponentsWithType(component, Scores);
+        expect(scores.length).to.equal(0)
+
+        let playerScores = List([6, 17])
+        component = renderIntoDocument(
+            <Player scores={playerScores} />
+        );
+        scores = scryRenderedComponentsWithType(component, Scores);
+        expect(scores.length).to.equal(1)
     });
 
 })

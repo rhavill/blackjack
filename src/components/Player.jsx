@@ -9,7 +9,8 @@ export default class Player extends Component {
 
     render() {
         return <div style={{minHeight: 130}}>
-            <Scores scores={this.props.scores} />
+            { this.props.scores.size ?
+                <Scores scores={this.props.scores}/> : '' }
             <Hand cards={this.props.cards} />
         </div>
     }
