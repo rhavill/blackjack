@@ -7,6 +7,7 @@ import {
 
 import Player from '../../src/components/Player';
 import Hand from '../../src/components/Hand'
+import Scores from '../../src/components/Scores'
 
 describe('Player', () => {
 
@@ -15,6 +16,13 @@ describe('Player', () => {
             <Player isDealer={true} />
         );
         let hand = findRenderedComponentWithType(component, Hand);
+    });
+
+    it('has one Scores component', () => {
+        let component = renderIntoDocument(
+            <Player isDealer={true} />
+        );
+        let scores = findRenderedComponentWithType(component, Scores);
     });
 
 })
