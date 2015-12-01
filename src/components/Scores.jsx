@@ -6,9 +6,10 @@ export default class Scores extends Component {
 
     render() {
 
-        return <div>
+        return <div><h3>scores</h3>
             {this.props.scores.map(score =>
-                    score
+
+                {<p>score</p>}
             )}
         </div>
     }

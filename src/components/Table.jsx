@@ -29,7 +29,7 @@ export default class Table extends Component {
             }
             minScore += card.get('points')
         })
-        let scores = [minScore]
+        let scores = minScore ? [minScore] : []
         if (aceCount) {
             scores.push(minScore + 10)
             if (aceCount == 3 && cards.size == 3) {
@@ -42,8 +42,12 @@ export default class Table extends Component {
 
     render() {
         return <div>
-            <Player ref="dealer" isDealer={true} cards={this.getCards().dealer} />
-            <Player ref="player" isDealer={false} cards={this.getCards().player} />
+            <Player ref="dealer" isDealer={true}
+                    scores={this.getScores(this.props.dealer)}
+                    cards={this.getCards().dealer} />
+            <Player ref="player" isDealer={false}
+                    scores={this.getScores(this.props.player)}
+                    cards={this.getCards().player} />
             <Buttons turn={this.props.turn} deal={this.props.deal}/>
             <Deck deck={this.props.deck} />
         </div>;
