@@ -22,7 +22,7 @@ describe('Player', () => {
 
     it('has one Scores component with scores', () => {
         let component = renderIntoDocument(
-            <Player isDealer={true} />
+            <Player isDealer={false} />
         );
         let scores = scryRenderedComponentsWithType(component, Scores);
         expect(scores.length).to.equal(0)
@@ -33,6 +33,15 @@ describe('Player', () => {
         );
         scores = scryRenderedComponentsWithType(component, Scores);
         expect(scores.length).to.equal(1)
+    });
+
+    it('only shows dealer scores on dealer turn', () => {
+        let dealerScores = List([6, 17])
+        let component = renderIntoDocument(
+            <Player isDealer={true} scores={dealerScores} />
+        );
+        let scores = scryRenderedComponentsWithType(component, Scores);
+        expect(scores.length).to.equal(0)
     });
 
 })

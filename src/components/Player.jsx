@@ -7,10 +7,18 @@ import Scores from './Scores'
 
 export default class Player extends Component {
 
+    showScores() {
+        return this.props.scores.size  && (
+            !this.props.isDealer ||
+            this.props.turn == 'dealer' ||
+            this.props.turn == 'fini'
+        )
+    }
+
     render() {
         return <div style={{minHeight: 130}}>
             <Hand cards={this.props.cards} />
-            { this.props.scores.size ?
+            { this.showScores() ?
                 <Scores scores={this.props.scores}/> : '' }
         </div>
     }
@@ -18,6 +26,7 @@ export default class Player extends Component {
 
 Player.defaultProps = {
     isDealer: false,
+    turn: null,
     cards: List(),
     scores: List()
 }

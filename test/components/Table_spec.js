@@ -44,4 +44,37 @@ describe('Table', () => {
         expect(component.getScores(player)).to.equal(fromJS([7, 17]))
     })
 
+    it('does not have scores > 21', () => {
+        let aceOfClubs = 0;
+        let sixOfSpades = 44;
+        let sevenOfSpades = 45;
+        let player = List([aceOfClubs, sixOfSpades, sevenOfSpades])
+        let component = renderIntoDocument(
+            <Table turn="player" player={player} deck={cards} />
+        );
+        expect(component.getScores(player)).to.equal(fromJS([14]))
+    })
+
+    it('busts with minimum score > 21', () => {
+        let nineOfClubs = 8;
+        let sixOfSpades = 44;
+        let sevenOfSpades = 45;
+        let player = List([nineOfClubs, sixOfSpades, sevenOfSpades])
+        let component = renderIntoDocument(
+            <Table turn="player" player={player} deck={cards} />
+        );
+        expect(component.getScores(player)).to.equal(fromJS(['BUST']))
+    })
+
+    it('does not have score > 21', () => {
+        let aceOfClubs = 0;
+        let sixOfSpades = 44;
+        let sevenOfSpades = 45;
+        let player = List([aceOfClubs, sixOfSpades, sevenOfSpades])
+        let component = renderIntoDocument(
+            <Table turn="player" player={player} deck={cards} />
+        );
+        expect(component.getScores(player)).to.equal(fromJS([14]))
+    })
+
 })
