@@ -43,14 +43,20 @@ function player(state, action) {
                 let nextState = state.push(action.cardIndex)
                 return nextState;
             }
+            break
+        case 'PLAYER_CARD':
+            return state.push(action.cardIndex)
         default:
             return state;
     }
+    return state
 }
 
 function nextCardIndex(state, action) {
     switch (action.type) {
         case 'DEAL_CARD':
+        case 'PLAYER_CARD':
+        case 'DEALER_CARD':
             return state + 1;
         default:
             return state;

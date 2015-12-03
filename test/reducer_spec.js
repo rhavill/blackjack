@@ -71,7 +71,19 @@ describe('reducer', () => {
         action.cardIndex = nextState.get('nextCardIndex')
         expect(action.cardIndex).to.equal(4)
         expect(nextState.getIn(['deck', 3, 'isFaceUp'])).to.equal(false);
+        });
 
+    it('handles PLAYER_CARD', () => {
+        const initialState = setInitialState()
+            .set('nextCardIndex', 4)
+            .set('player', List([0, 2]));
+        const action = {
+            type: 'PLAYER_CARD',
+            cardIndex: initialState.get('nextCardIndex')
+        };
+        const nextState = reducer(initialState, action);
+        expect(nextState.get('player')).to.equal(fromJS([0, 2, 4]));
+        expect(nextState.get('nextCardIndex')).to.equal(5);
     });
 
 });

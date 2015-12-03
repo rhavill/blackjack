@@ -55,7 +55,8 @@ export default class Table extends Component {
                     turn={this.props.turn}
                     scores={this.getScores(this.props.player)}
                     cards={this.getCards().player} />
-            <Buttons turn={this.props.turn} deal={this.props.deal}/>
+            <Buttons turn={this.props.turn} deal={this.props.deal}
+                hit={this.props.hit} />
             <Deck deck={this.props.deck} />
         </div>;
     }

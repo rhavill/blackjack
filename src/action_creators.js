@@ -31,9 +31,15 @@ export function dealCard() {
 }
 
 export function hit() {
-    return {
-        type: 'HIT'
-    };
+    return (dispatch, getState) => {
+        delayedDispatch(dispatch, {
+            type:'PLAYER_CARD',
+            cardIndex: getState().get('nextCardIndex')
+        })
+    }
+    //return {
+    //    type: 'HIT'
+    //};
 }
 
 export function stay() {
@@ -60,16 +66,20 @@ export function resetDeck() {
     };
 }
 
-function dealNextCard(dispatch, getState) {
+function delayedDispatch(dispatch, action) {
     let promise = new Promise((resolve) => {
         setTimeout(() => {
-            let cardIndex = getState().get('nextCardIndex');
-            dispatch({
-                type:'DEAL_CARD',
-                cardIndex
-            })
-            resolve();
+            dispatch(action)
+            resolve()
         }, 1000)
     })
     return promise
+}
+
+function dealNextCard(dispatch, getState) {
+    let cardIndex = getState().get('nextCardIndex');
+    return delayedDispatch(dispatch, {
+        type:'DEAL_CARD',
+        cardIndex
+    });
 }
