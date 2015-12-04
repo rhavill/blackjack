@@ -17,11 +17,12 @@ export function setDeck(deck) {
 export function deal() {
     // Deal four cards
     return (dispatch, getState) => {
-        dispatch({type:'SET_TURN', turn:'player'})
+        dispatch({type:'SET_TURN', turn:'dealing'})
         dealNextCard(dispatch, getState)
             .then(() => dealNextCard(dispatch, getState))
             .then(() => dealNextCard(dispatch, getState))
             .then(() => dealNextCard(dispatch, getState))
+            .then(() => {dispatch({type:'SET_TURN', turn:'player'})})
     };
 }
 
@@ -33,6 +34,7 @@ export function dealCard() {
 
 export function hit() {
     return (dispatch, getState) => {
+        dispatch({type:'SET_TURN', turn:'dealing'})
         delayedDispatch(dispatch, {
             type:'PLAYER_CARD',
             cardIndex: getState().get('nextCardIndex')
@@ -41,6 +43,9 @@ export function hit() {
             let scores = getScores(state.get('deck'), state.get('player'))
             if (scores.get(0) ==  'BUST' || scores.get(0) > 20) {
                 dealerTurn(dispatch)
+            }
+            else {
+                dispatch({type:'SET_TURN', turn:'player'})
             }
         })
     }
