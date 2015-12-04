@@ -85,7 +85,16 @@ describe('reducer', () => {
         let nextState = reducer(initialState, action);
         expect(nextState.get('player')).to.equal(fromJS([0, 2, 4]));
         expect(nextState.get('nextCardIndex')).to.equal(5);
+    });
 
+    it('handles DEALER_SHOW', () => {
+        const initialState = setInitialState()
+            .setIn(['deck', 3, 'isFaceUp'], false)
+        const action = {
+            type: 'DEALER_SHOW'
+        };
+        const nextState = reducer(initialState, action);
+        expect(nextState.getIn(['deck', 3, 'isFaceUp'])).to.equal(true);
     });
 
 });

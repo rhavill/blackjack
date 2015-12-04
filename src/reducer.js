@@ -19,6 +19,8 @@ function deck(state, action) {
                 return nextState;
 
             }
+        case 'DEALER_SHOW':
+            return state.setIn([3, 'isFaceUp'], true)
         default:
             return state;
     }

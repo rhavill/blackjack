@@ -40,10 +40,7 @@ export function hit() {
             const state = getState()
             let scores = getScores(state.get('deck'), state.get('player'))
             if (scores.get(0) ==  'BUST' || scores.get(0) > 20) {
-                dispatch({
-                    type: 'SET_TURN',
-                    turn: 'dealer'
-                })
+                dealerTurn(dispatch)
             }
         })
     }
@@ -51,10 +48,7 @@ export function hit() {
 
 export function stay() {
     return (dispatch) => {
-        dispatch({
-            type: 'SET_TURN',
-            turn: 'dealer'
-        })
+        dealerTurn(dispatch)
     }
 }
 
@@ -64,10 +58,14 @@ export function dealerShow() {
     };
 }
 
-export function dealerTurn() {
-    return {
-        type: 'DEALER_TURN'
-    };
+export function dealerTurn(dispatch) {
+    dispatch({
+        type: 'SET_TURN',
+        turn: 'dealer'
+    })
+    dispatch({
+        type: 'DEALER_SHOW'
+    })
 }
 
 export function resetDeck() {
