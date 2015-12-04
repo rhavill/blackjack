@@ -74,16 +74,18 @@ describe('reducer', () => {
         });
 
     it('handles PLAYER_CARD', () => {
-        const initialState = setInitialState()
+        let tenOfClubs = 9
+        let initialState = setInitialState()
             .set('nextCardIndex', 4)
             .set('player', List([0, 2]));
-        const action = {
+        let action = {
             type: 'PLAYER_CARD',
             cardIndex: initialState.get('nextCardIndex')
         };
-        const nextState = reducer(initialState, action);
+        let nextState = reducer(initialState, action);
         expect(nextState.get('player')).to.equal(fromJS([0, 2, 4]));
         expect(nextState.get('nextCardIndex')).to.equal(5);
+
     });
 
 });

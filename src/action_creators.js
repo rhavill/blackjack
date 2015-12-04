@@ -1,3 +1,4 @@
+import {getScores} from './utilities/functions'
 
 export function setTurn(turn) {
     return {
@@ -35,11 +36,17 @@ export function hit() {
         delayedDispatch(dispatch, {
             type:'PLAYER_CARD',
             cardIndex: getState().get('nextCardIndex')
+        }).then(() => {
+            const state = getState()
+            let scores = getScores(state.get('deck'), state.get('player'))
+            if (scores.get(0) ==  'BUST' || scores.get(0) > 20) {
+                dispatch({
+                    type: 'SET_TURN',
+                    turn: 'dealer'
+                })
+            }
         })
     }
-    //return {
-    //    type: 'HIT'
-    //};
 }
 
 export function stay() {

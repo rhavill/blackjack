@@ -5,6 +5,8 @@ import Buttons from './Buttons';
 import Player from './Player';
 import Deck from './Deck';
 
+import {getScores} from '../utilities/functions'
+
 export default class Table extends Component {
 
     getCards() {
@@ -19,41 +21,15 @@ export default class Table extends Component {
         return cards
     }
 
-    getScores(cardIndexes) {
-        let aceCount = 0, minScore = 0;
-        const deck = this.props.deck
-        cardIndexes.map((index) => {
-            let card = deck.get(index)
-            if (card.get('rank') == 'A') {
-                aceCount++
-            }
-            minScore += card.get('points')
-        })
-        let scores = minScore ? [minScore] : []
-        if (minScore > 21) {
-            scores = ['BUST']
-        }
-        if (aceCount) {
-            if (minScore < 12) {
-                scores.push(minScore + 10)
-            }
-            if (aceCount == 3 && cardIndexes.size == 3) {
-                scores.push(21)
-            }
-
-        }
-        return List(scores);
-    }
-
     render() {
         return <div>
             <Player ref="dealer" isDealer={true}
                     turn={this.props.turn}
-                    scores={this.getScores(this.props.dealer)}
+                    scores={getScores(this.props.deck, this.props.dealer)}
                     cards={this.getCards().dealer} />
             <Player ref="player" isDealer={false}
                     turn={this.props.turn}
-                    scores={this.getScores(this.props.player)}
+                    scores={getScores(this.props.deck, this.props.player)}
                     cards={this.getCards().player} />
             <Buttons turn={this.props.turn} deal={this.props.deal}
                 hit={this.props.hit} />

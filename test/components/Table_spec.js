@@ -11,6 +11,7 @@ import Table from '../../src/components/Table';
 import Buttons from '../../src/components/Buttons';
 import Player from '../../src/components/Player'
 import cards from '../../src/data/cards';
+import {getScores} from '../../src/utilities/functions'
 
 describe('Table', () => {
 
@@ -41,7 +42,7 @@ describe('Table', () => {
         let component = renderIntoDocument(
             <Table turn="player" player={player} deck={cards} />
         );
-        expect(component.getScores(player)).to.equal(fromJS([7, 17]))
+        expect(getScores(cards, player)).to.equal(fromJS([7, 17]))
     })
 
     it('does not have scores > 21', () => {
@@ -52,7 +53,7 @@ describe('Table', () => {
         let component = renderIntoDocument(
             <Table turn="player" player={player} deck={cards} />
         );
-        expect(component.getScores(player)).to.equal(fromJS([14]))
+        expect(getScores(cards, player)).to.equal(fromJS([14]))
     })
 
     it('busts with minimum score > 21', () => {
@@ -63,7 +64,7 @@ describe('Table', () => {
         let component = renderIntoDocument(
             <Table turn="player" player={player} deck={cards} />
         );
-        expect(component.getScores(player)).to.equal(fromJS(['BUST']))
+        expect(getScores(cards, player)).to.equal(fromJS(['BUST']))
     })
 
     it('does not have score > 21', () => {
@@ -74,7 +75,7 @@ describe('Table', () => {
         let component = renderIntoDocument(
             <Table turn="player" player={player} deck={cards} />
         );
-        expect(component.getScores(player)).to.equal(fromJS([14]))
+        expect(getScores(cards, player)).to.equal(fromJS([14]))
     })
 
 })
