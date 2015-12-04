@@ -26,12 +26,6 @@ export function deal() {
     };
 }
 
-export function dealCard() {
-    return {
-        type: 'DEAL_CARD'
-    };
-}
-
 export function hit() {
     return (dispatch, getState) => {
         dispatch({type:'SET_TURN', turn:'dealing'})
@@ -57,12 +51,6 @@ export function stay() {
     }
 }
 
-export function dealerShow() {
-    return {
-        type: 'DEALER_SHOW'
-    };
-}
-
 export function dealerTurn(dispatch) {
     dispatch({
         type: 'SET_TURN',
@@ -73,11 +61,6 @@ export function dealerTurn(dispatch) {
     })
 }
 
-export function resetDeck() {
-    return {
-        type: 'RESET_DECK'
-    };
-}
 
 function delayedDispatch(dispatch, action) {
     let promise = new Promise((resolve) => {
