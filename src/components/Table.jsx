@@ -32,7 +32,7 @@ export default class Table extends Component {
                     scores={getScores(this.props.deck, this.props.player)}
                     cards={this.getCards().player} />
             <Buttons turn={this.props.turn} deal={this.props.deal}
-                hit={this.props.hit} />
+                hit={this.props.hit} stay={this.props.stay} />
             <Deck deck={this.props.deck} />
         </div>;
     }

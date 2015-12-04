@@ -50,9 +50,12 @@ export function hit() {
 }
 
 export function stay() {
-    return {
-        type: 'STAY'
-    };
+    return (dispatch) => {
+        dispatch({
+            type: 'SET_TURN',
+            turn: 'dealer'
+        })
+    }
 }
 
 export function dealerShow() {
