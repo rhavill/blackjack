@@ -33,9 +33,13 @@ function dealer(state, action) {
                 let nextState = state.push(action.cardIndex)
                 return nextState;
             }
+            break
+        case 'DEALER_CARD':
+            return state.push(action.cardIndex)
         default:
             return state;
     }
+    return state
 }
 
 function player(state, action) {
