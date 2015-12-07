@@ -109,4 +109,18 @@ describe('reducer', () => {
         expect(nextState.getIn(['deck', 3, 'isFaceUp'])).to.equal(true);
     });
 
+    it('handles EMPTY_HANDS', () => {
+        let initialState = setInitialState()
+            .set('nextCardIndex', 4)
+            .set('dealer', List([1, 3]))
+            .set('player', List([0, 2]));
+        let action = {
+            type: 'EMPTY_HANDS'
+        };
+        let nextState = reducer(initialState, action);
+        expect(nextState.get('nextCardIndex')).to.equal(0);
+        expect(nextState.get('dealer')).to.equal(fromJS([]));
+        expect(nextState.get('player')).to.equal(fromJS([]));
+    });
+
 });

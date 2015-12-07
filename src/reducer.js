@@ -1,4 +1,4 @@
-import {Map} from 'immutable';
+import {List, Map} from 'immutable';
 
 function turn(state, action) {
     switch (action.type) {
@@ -36,6 +36,8 @@ function dealer(state, action) {
             break
         case 'DEALER_CARD':
             return state.push(action.cardIndex)
+        case 'EMPTY_HANDS':
+            return List()
         default:
             return state;
     }
@@ -52,6 +54,8 @@ function player(state, action) {
             break
         case 'PLAYER_CARD':
             return state.push(action.cardIndex)
+        case 'EMPTY_HANDS':
+            return List()
         default:
             return state;
     }
@@ -64,6 +68,8 @@ function nextCardIndex(state, action) {
         case 'PLAYER_CARD':
         case 'DEALER_CARD':
             return state + 1;
+        case 'EMPTY_HANDS':
+            return 0
         default:
             return state;
     }

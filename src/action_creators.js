@@ -18,6 +18,7 @@ export function deal() {
     // Deal four cards
     return (dispatch, getState) => {
         dispatch({type:'SET_TURN', turn:'dealing'})
+        dispatch({type:'EMPTY_HANDS'})
         dealNextCard(dispatch, getState)
             .then(() => dealNextCard(dispatch, getState))
             .then(() => dealNextCard(dispatch, getState))
