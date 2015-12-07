@@ -40,7 +40,9 @@ describe('Buttons', () => {
             <Buttons turn={'fini'} />
         );
         buttons = scryRenderedComponentsWithType(component, Button);
-        expect(buttons.length).to.equal(0);
+        expect(buttons.length).to.equal(1);
+        divs = scryRenderedDOMComponentsWithTag(buttons[0], 'div');
+        expect(divs[0].textContent).to.equal('deal');
     });
 
 })

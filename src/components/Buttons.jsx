@@ -8,6 +8,7 @@ export default class Buttons extends Component {
     getUsableButtons() {
         switch (this.props.turn) {
             case null:
+            case 'fini':
                 return ['deal'];
             case 'player':
                 return ['hit', 'stay'];

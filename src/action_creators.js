@@ -62,13 +62,12 @@ export function dealerTurn(dispatch, getState) {
     dealerPlay(dispatch, getState)
 }
 
-
 function dealerPlay(dispatch, getState) {
     let scores = getScores(getState().get('deck'), getState().get('dealer'))
     let maxScore = scores.reduce((previous, current) => {
         return current > previous ? current : previous
     }, 0)
-    if (maxScore < 17 && maxScore != 'BUST') {
+    if (maxScore < 17 && scores.indexOf('BUST') == -1) {
         delayedDispatch(dispatch, {
             type: 'DEALER_CARD',
             cardIndex: getState().get('nextCardIndex')
@@ -86,7 +85,7 @@ function delayedDispatch(dispatch, action) {
         setTimeout(() => {
             dispatch(action)
             resolve()
-        }, 1000)
+        }, 500)
     })
     return promise
 }
