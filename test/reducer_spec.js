@@ -74,7 +74,6 @@ describe('reducer', () => {
         });
 
     it('handles PLAYER_CARD', () => {
-        let tenOfClubs = 9
         let initialState = setInitialState()
             .set('nextCardIndex', 4)
             .set('player', List([0, 2]));
@@ -84,6 +83,19 @@ describe('reducer', () => {
         };
         let nextState = reducer(initialState, action);
         expect(nextState.get('player')).to.equal(fromJS([0, 2, 4]));
+        expect(nextState.get('nextCardIndex')).to.equal(5);
+    });
+
+    it('handles DEALER_CARD', () => {
+        let initialState = setInitialState()
+            .set('nextCardIndex', 4)
+            .set('dealer', List([1, 3]));
+        let action = {
+            type: 'DEALER_CARD',
+            cardIndex: initialState.get('nextCardIndex')
+        };
+        let nextState = reducer(initialState, action);
+        expect(nextState.get('dealer')).to.equal(fromJS([1, 3, 4]));
         expect(nextState.get('nextCardIndex')).to.equal(5);
     });
 
