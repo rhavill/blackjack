@@ -3,7 +3,7 @@ import {List, Map} from 'immutable'
 
 import Buttons from './Buttons';
 import Player from './Player';
-import Deck from './Deck';
+import Result from './Result';
 
 import {getScores} from '../utilities/functions'
 
@@ -23,6 +23,10 @@ export default class Table extends Component {
 
     render() {
         return <div>
+            { this.props.turn == 'fini' ?
+                <Result player={getScores(this.props.deck, this.props.player)}
+                    dealer={getScores(this.props.deck, this.props.dealer)}/>
+                : '' }
             <Player ref="dealer" isDealer={true}
                     turn={this.props.turn}
                     scores={getScores(this.props.deck, this.props.dealer)}
@@ -33,7 +37,6 @@ export default class Table extends Component {
                     cards={this.getCards().player} />
             <Buttons turn={this.props.turn} deal={this.props.deal}
                 hit={this.props.hit} stay={this.props.stay} />
-            <Deck deck={this.props.deck} />
         </div>;
     }
 }
