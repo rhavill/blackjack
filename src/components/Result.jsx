@@ -7,6 +7,14 @@ export default class Result extends Component {
 
     render() {
         const style = {
+            color:'white',
+            position:'absolute',
+            width:150,
+            height: 70,
+            top:'40%',
+            left:'40%',
+            zIndex: 4,
+            backgroundColor: 'black'
         };
 
         return <div>
@@ -16,7 +24,9 @@ export default class Result extends Component {
                                        transitionAppearTimeout={1500}
                                        transitionEnter={false}
                                        transitionLeave={false}>
-                <h1 style={{color:'white',position:'absolute',width:140,top:'40%',left:'40%'}}>You Win!</h1>
+                <div style={style}>
+                <h1 style={{position:'relative'}}>You Lose!</h1>
+                </div>
             </ReactCSSTransitionGroup>
         </div>
     }
