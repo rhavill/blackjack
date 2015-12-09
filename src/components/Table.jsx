@@ -20,6 +20,44 @@ export default class Table extends Component {
         return cards
     }
 
+    getPlayerScores() {
+        if (this.props.turn == 'fini') {
+            return List([this.getPlayerStatus()])
+        }
+        return getScores(this.props.deck, this.props.player)
+    }
+
+    getPlayerStatus() {
+        let status = 'PUSH'
+        let dealerScores = getScores(this.props.deck, this.props.dealer)
+        let playerScores = getScores(this.props.deck, this.props.player)
+        let dealerBust = (dealerScores.get(0) == 'BUST')
+        let playerBust = (playerScores.get(0) == 'BUST')
+        if (dealerBust || playerBust) {
+            if (dealerBust && !playerBust) {
+                status = 'WIN'
+            }
+            else if (!dealerBust && playerBust) {
+                status = 'LOSE'
+            }
+        }
+        else {
+            let bestPlayerScore = playerScores.reduce((previous, next) => {
+                return (next < 22 && next > previous) ? next : previous
+            }, 0)
+            let bestDealerScore = dealerScores.reduce((previous, next) => {
+                return (next < 22 && next > previous) ? next : previous
+            }, 0)
+            if (bestPlayerScore < bestDealerScore) {
+                status = 'LOSE'
+            }
+            else if (bestPlayerScore > bestDealerScore) {
+                status = 'WIN'
+            }
+        }
+        return status
+    }
+
     render() {
         return <div>
             <Player ref="dealer" isDealer={true}
@@ -28,7 +66,7 @@ export default class Table extends Component {
                     cards={this.getCards().dealer} />
             <Player ref="player" isDealer={false}
                     turn={this.props.turn}
-                    scores={getScores(this.props.deck, this.props.player)}
+                    scores={this.getPlayerScores()}
                     cards={this.getCards().player} />
             <Buttons turn={this.props.turn} deal={this.props.deal}
                 hit={this.props.hit} stay={this.props.stay} />
