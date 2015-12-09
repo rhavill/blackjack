@@ -45,6 +45,16 @@ describe('Table', () => {
         expect(getScores(cards, player)).to.equal(fromJS([7, 17]))
     })
 
+    it('display 21 as a single score', () => {
+        let aceOfClubs = 0;
+        let tenOfSpades = 48;
+        let player = List([aceOfClubs, tenOfSpades])
+        let component = renderIntoDocument(
+            <Table turn="player" player={player} deck={cards} />
+        );
+        expect(getScores(cards, player)).to.equal(fromJS([21]))
+    })
+
     it('player score displays PUSH after a tie', () => {
         let aceOfClubs = 0;
         let sixOfClubs = 5;

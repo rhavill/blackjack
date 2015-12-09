@@ -13,11 +13,14 @@ export function getScores(deck, cardIndexes) {
     if (minScore > 21) {
         scores = ['BUST']
     }
-    if (aceCount) {
-        if (minScore < 12) {
+    else if (aceCount) {
+        if (minScore == 11) {
+            scores = [21]
+        }
+        else if (minScore < 11) {
             scores.push(minScore + 10)
         }
-        if (aceCount == 3 && cardIndexes.size == 3) {
+        else if (aceCount == 3 && cardIndexes.size == 3) {
             scores = [21]
         }
     }
