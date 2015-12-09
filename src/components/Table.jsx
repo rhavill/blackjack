@@ -28,7 +28,7 @@ export default class Table extends Component {
                     cards={this.getCards().dealer} />
             <Player ref="player" isDealer={false}
                     turn={this.props.turn}
-                    scores={getScores(this.props.deck, this.props.player, this.props.turn)}
+                    scores={getScores(this.props.deck, this.props.player)}
                     cards={this.getCards().player} />
             <Buttons turn={this.props.turn} deal={this.props.deal}
                 hit={this.props.hit} stay={this.props.stay} />
