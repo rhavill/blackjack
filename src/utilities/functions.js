@@ -18,7 +18,7 @@ export function getScores(deck, cardIndexes) {
             scores.push(minScore + 10)
         }
         if (aceCount == 3 && cardIndexes.size == 3) {
-            scores.push(21)
+            scores = [21]
         }
     }
     return List(scores);
