@@ -77,7 +77,7 @@ function dealerPlay(dispatch, getState) {
         })
     }
     else {
-        dispatch({type:'SET_TURN', turn:'fini'})
+        delayedDispatch(dispatch, {type:'SET_TURN', turn:'fini'})
     }
 }
 
@@ -86,7 +86,7 @@ function delayedDispatch(dispatch, action) {
         setTimeout(() => {
             dispatch(action)
             resolve()
-        }, 500)
+        }, 700)
     })
     return promise
 }
