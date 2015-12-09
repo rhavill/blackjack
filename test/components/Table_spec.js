@@ -10,7 +10,6 @@ import {List, fromJS} from 'immutable'
 import Table from '../../src/components/Table';
 import Buttons from '../../src/components/Buttons';
 import Player from '../../src/components/Player'
-import Result from '../../src/components/Result'
 import cards from '../../src/data/cards';
 import {getScores} from '../../src/utilities/functions'
 
@@ -79,17 +78,4 @@ describe('Table', () => {
         expect(getScores(cards, player)).to.equal(fromJS([14]))
     })
 
-    it('displays Result when game is over', () => {
-        let component = renderIntoDocument(
-            <Table turn="player" />
-        );
-        let results = scryRenderedComponentsWithType(component, Result)
-        expect(results.length).to.equal(0);
-
-        component = renderIntoDocument(
-            <Table turn="fini" />
-        );
-        results = scryRenderedComponentsWithType(component, Result)
-        expect(results.length).to.equal(1);
-    })
 })
