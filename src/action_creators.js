@@ -19,6 +19,7 @@ export function deal() {
     return (dispatch, getState) => {
         dispatch({type:'SET_TURN', turn:'dealing'})
         dispatch({type:'EMPTY_HANDS'})
+        dispatch({type:'SET_DECK', deck:shuffle(getState().get('deck'))})
         dealNextCard(dispatch, getState)
             .then(() => dealNextCard(dispatch, getState))
             .then(() => dealNextCard(dispatch, getState))
@@ -97,4 +98,19 @@ function dealNextCard(dispatch, getState) {
         type:'DEAL_CARD',
         cardIndex
     });
+}
+
+function shuffle(deck) {
+    let minIndex = 0, maxIndex = deck.size - 1;
+    let cards = deck.asMutable()
+    cards.map(function (card, index) {
+        let newIndex = Math.floor(Math.random() * (maxIndex - minIndex + 1)) + minIndex;
+        if (index != newIndex) {
+            let card = cards.get(index);
+            let swapCard = cards.get(newIndex);
+            cards = cards.set(newIndex, card).set(index, swapCard);
+        }
+
+    });
+    return cards.asImmutable()
 }
