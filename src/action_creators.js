@@ -24,7 +24,7 @@ export function deal() {
             .then(() => dealNextCard(dispatch, getState))
             .then(() => dealNextCard(dispatch, getState))
             .then(() => dealNextCard(dispatch, getState))
-            .then(() => {dispatch({type:'SET_TURN', turn:'player'})})
+            .then(() => {playerTurn(dispatch, getState)})
     };
 }
 
@@ -53,7 +53,7 @@ export function stay() {
     }
 }
 
-export function dealerTurn(dispatch, getState) {
+function dealerTurn(dispatch, getState) {
     dispatch({
         type: 'SET_TURN',
         turn: 'dealer'
@@ -62,6 +62,16 @@ export function dealerTurn(dispatch, getState) {
         type: 'DEALER_SHOW'
     })
     dealerPlay(dispatch, getState)
+}
+
+function playerTurn(dispatch, getState) {
+    let scores = getScores(getState().get('deck'), getState().get('player'))
+    if (scores.indexOf(21) != -1) {
+        dealerTurn(dispatch, getState)
+    }
+    else {
+        dispatch({type: 'SET_TURN', turn: 'player'})
+    }
 }
 
 function dealerPlay(dispatch, getState) {
