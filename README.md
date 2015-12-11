@@ -17,3 +17,5 @@ Open your browser and navigate to http://localhost:8080
 
 ## Credits
 - Digital-7 font by Sizenko Alexander (http://www.styleseven.com)
+- Card images by Tony Spiro (https://github.com/tonyspiro/blackjack)
+- Buttons derived from example by James Kyle (http://cssdeck.com/labs/3d-download-button)
