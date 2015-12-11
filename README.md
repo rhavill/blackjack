@@ -13,6 +13,7 @@ webpack-dev-server
 ```
 
 ## Running the Application
-```
-webpack-dev-server
-```
+Open your browser and navigate to http://localhost:8080
+
+## Credits
+- Digital-7 font by Sizenko Alexander (http://www.styleseven.com)
