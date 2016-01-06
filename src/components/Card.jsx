@@ -4,6 +4,7 @@ import {Map} from 'immutable'
 
 export default class Card extends Component {
     render() {
+        console.log(this.props.index)
         let backgroundPosition = this.props.card.get('backgroundPosition');
         let isFaceUp = this.props.card.get('isFaceUp');
         let id =  this.props.card.get('id');
@@ -11,6 +12,8 @@ export default class Card extends Component {
             perspective: '800px',
             height: '123px',
             width: '79px',
+            position: 'absolute',
+            left: 15*this.props.index,
             margin: '7px 0 0 7px'
         };
         let cardStyle = {
@@ -46,7 +49,7 @@ export default class Card extends Component {
         else {
             frontStyle.transform = 'rotateY( 180deg )';
         }
-        return <div className="card-container" style={containerStyle}>
+        return <div style={{position:'relative'}}><div className="card-container" style={containerStyle}>
             <ReactCSSTransitionGroup  key={id}
                                       transitionName="flip"
                                       transitionAppear={isFaceUp}
@@ -58,7 +61,7 @@ export default class Card extends Component {
                     <div className="front" style={frontStyle}></div>
                 </div>
             </ReactCSSTransitionGroup>
-        </div>;
+        </div></div>;
     }
 }
 

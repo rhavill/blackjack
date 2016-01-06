@@ -14,15 +14,15 @@ export default class Hand extends Component {
         };
 
         return <div style={style}>
-            {this.props.cards.map(card =>
+            {this.props.cards.map(function(card, index) { return (
                     <ReactCSSTransitionGroup   key={card.get('id')}
                                                transitionName="fadein"
                                                transitionAppear={true}
                                                transitionAppearTimeout={500}
                                                transitionEnter={false}
                                                transitionLeave={false}>
-                        <Card key={card.get('id')} card={card} />
-                    </ReactCSSTransitionGroup>
+                        <Card key={card.get('id')} card={card} index={index} />
+                    </ReactCSSTransitionGroup>) }
             )}
         </div>
     }
