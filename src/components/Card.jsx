@@ -49,7 +49,7 @@ export default class Card extends Component {
         else {
             frontStyle.transform = 'rotateY( 180deg )';
         }
-        return <div style={{position:'relative'}}><div className="card-container" style={containerStyle}>
+        return <div className="card-container" style={containerStyle}>
             <ReactCSSTransitionGroup  key={id}
                                       transitionName="flip"
                                       transitionAppear={isFaceUp}
@@ -61,7 +61,7 @@ export default class Card extends Component {
                     <div className="front" style={frontStyle}></div>
                 </div>
             </ReactCSSTransitionGroup>
-        </div></div>;
+        </div>;
     }
 }
 

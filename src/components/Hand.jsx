@@ -7,13 +7,8 @@ import Card from './Card';
 export default class Hand extends Component {
 
     render() {
-        const style = {
-            display:'flex',
-            flexWrap:'wrap',
-            justifyContent: 'center'
-        };
 
-        return <div style={style}>
+        return <div className="hand">
             {this.props.cards.map(function(card, index) { return (
                     <ReactCSSTransitionGroup   key={card.get('id')}
                                                transitionName="fadein"
