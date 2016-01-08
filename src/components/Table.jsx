@@ -59,18 +59,23 @@ export default class Table extends Component {
     }
 
     render() {
-        return <div>
-            <Player ref="dealer" isDealer={true}
-                    turn={this.props.turn}
-                    scores={getScores(this.props.deck, this.props.dealer)}
-                    cards={this.getCards().dealer} />
-            <div id="player-container" style={{display:'flex',flexDirection:'column',width:200}}>
-            <Player ref="player" isDealer={false}
-                    turn={this.props.turn}
-                    scores={this.getPlayerScores()}
-                    cards={this.getCards().player} />
-            <Buttons turn={this.props.turn} deal={this.props.deal}
-                hit={this.props.hit} stay={this.props.stay} />
+        const handWidth = 200
+        return <div className="table">
+            <div style={{display:'flex',flexWrap:'wrap'}}>
+                <div id="dealer-container" style={{width:handWidth}}>
+                    <Player ref="dealer" isDealer={true}
+                            turn={this.props.turn}
+                            scores={getScores(this.props.deck, this.props.dealer)}
+                            cards={this.getCards().dealer} />
+                </div>
+                <div id="player-container" style={{display:'flex',flexDirection:'column',width:handWidth}}>
+                    <Player ref="player" isDealer={false}
+                            turn={this.props.turn}
+                            scores={this.getPlayerScores()}
+                            cards={this.getCards().player} />
+                    <Buttons turn={this.props.turn} deal={this.props.deal}
+                        hit={this.props.hit} stay={this.props.stay} />
+                </div>
             </div>
         </div>;
     }
