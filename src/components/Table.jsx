@@ -61,7 +61,7 @@ export default class Table extends Component {
     render() {
         const handWidth = 200
         return <div className="table">
-            <div style={{display:'flex',flexWrap:'wrap'}}>
+            <div style={{display:'flex',flexWrap:'wrap',justifyContent:'center'}}>
                 <div id="dealer-container" style={{width:handWidth}}>
                     <Player ref="dealer" isDealer={true}
                             turn={this.props.turn}
