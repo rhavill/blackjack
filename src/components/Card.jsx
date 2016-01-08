@@ -4,7 +4,6 @@ import {Map} from 'immutable'
 
 export default class Card extends Component {
     render() {
-        console.log(this.props.index)
         let backgroundPosition = this.props.card.get('backgroundPosition');
         let isFaceUp = this.props.card.get('isFaceUp');
         let id =  this.props.card.get('id');
