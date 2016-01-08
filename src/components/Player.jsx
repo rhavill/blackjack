@@ -16,7 +16,16 @@ export default class Player extends Component {
     }
 
     render() {
-        return <div style={{minHeight: 130}}>
+        const style = {
+            minHeight: 130,
+            position: 'relative',
+            display:'flex',
+            flexDirection:'column',
+            justifyContent: 'center',
+            width: 200
+        }
+
+        return <div style={style} className="player">
             <Hand cards={this.props.cards} />
             { this.showScores() ?
                 <Scores scores={this.props.scores}/> : '' }

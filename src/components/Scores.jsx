@@ -9,7 +9,9 @@ export default class Scores extends Component {
             display:'flex',
             flexWrap:'wrap',
             justifyContent: 'center',
-            padding: '5px 5px 5px 5px'
+            padding: '5px 5px 5px 5px',
+            //position: 'absolute',
+            //top: 0
         };
 
         const innerStyle = {
@@ -24,7 +26,7 @@ export default class Scores extends Component {
             height: 30,
             paddingTop: 5
         }
-        return <div style={style}>
+        return <div style={style} className="scores">
             <ReactCSSTransitionGroup   key={1}
                                        transitionName="fadein"
                                        transitionAppear={true}

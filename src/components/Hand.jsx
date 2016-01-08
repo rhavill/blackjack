@@ -8,7 +8,7 @@ export default class Hand extends Component {
 
     render() {
 
-        return <div className="hand">
+        return <div className="hand" style={{left:30,position:'relative',height:130,width:200}}>
             {this.props.cards.map(function(card, index) { return (
                     <ReactCSSTransitionGroup   key={card.get('id')}
                                                transitionName="fadein"

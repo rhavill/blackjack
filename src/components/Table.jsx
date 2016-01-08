@@ -64,12 +64,14 @@ export default class Table extends Component {
                     turn={this.props.turn}
                     scores={getScores(this.props.deck, this.props.dealer)}
                     cards={this.getCards().dealer} />
+            <div id="player-container" style={{display:'flex',flexDirection:'column',width:200}}>
             <Player ref="player" isDealer={false}
                     turn={this.props.turn}
                     scores={this.getPlayerScores()}
                     cards={this.getCards().player} />
             <Buttons turn={this.props.turn} deal={this.props.deal}
                 hit={this.props.hit} stay={this.props.stay} />
+            </div>
         </div>;
     }
 }
