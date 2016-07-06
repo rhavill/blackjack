@@ -1,6 +1,9 @@
 # blackjack
 A card game built with React (https://facebook.github.io/react/index.html)
 
+## Demo
+http://whereyouat.net/blackjack/
+
 ## Installation
 
 From within the root directory:
